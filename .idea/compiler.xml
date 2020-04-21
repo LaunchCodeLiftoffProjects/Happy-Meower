@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="CompilerConfiguration">
-    <bytecodeTargetLevel>
-      <module name="com.happyhour.Happy-Hour.main" target="14" />
-      <module name="com.happyhour.Happy-Hour.test" target="14" />
-    </bytecodeTargetLevel>
-  </component>
-</project>
