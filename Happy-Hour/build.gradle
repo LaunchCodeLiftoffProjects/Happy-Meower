@@ -6,7 +6,6 @@ plugins {
 
 group = 'com.happyhour'
 version = '0.0.1-SNAPSHOT'
-//noinspection GroovyUnusedAssignment
 sourceCompatibility = '14'
 
 configurations {
