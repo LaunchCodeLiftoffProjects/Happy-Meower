@@ -1,0 +1,45 @@
+.bg{
+    background-image: url("/img/HappyHourBG.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-color: #D8801A;
+}
+
+body,html{
+    height: 100%;
+}
+
+.searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.search_input{
+    color: black;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 450px;
+    padding: 0 10px;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+}
+
+.search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #e74c3c;
+    text-decoration:none;
+}
