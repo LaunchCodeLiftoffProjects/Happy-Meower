@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Happy-Hour.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Happy-Hour.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Happy-Hour.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Happy-Hour.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Happy-Meower.iml" filepath="$PROJECT_DIR$/.idea/Happy-Meower.iml" />
     </modules>
   </component>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<head> <!--Add this link to "fragments :: head"-->
+    <link th:href="@{/css/authentication.css}" rel="stylesheet"/>
+</head>
+
+<title th:text="${title}"></title>
+
+<body class="container bg">
+
+    <div class="page-header">
+        <h1>Happy Hour Locator</h1>
+    </div>
+
+    <div class="navbar-header navibar">                     <!--This nav bar should be fragmented-->
+            <a th:href="@{/}" class="navbar-brand nav-home">Home</a>
+            <p th:text="${title}" class="navbar-brand nav-pageheader"></p>
+    </div>
+
+    <form method="post">
+        <div class="form-group">
+            <label>Username
+                <input class="form-control" name ="username" id="username"> <!--id="username" placeholder for th:field=owner class field later-->
+            </label>
+
+        </div>
+        <div class="form-group">
+            <label>Password
+                <input class="form-control" name="password" id="password" type="password"> <!--id="password" placeholder for th:field=owner class field later-->
+            </label>
+
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Log In" />
+    </form>
+
+    <p>Don't have an account? <a href="">Register for one.</a></p>  <!--href="" placeholder for registration page-->
+
+</body>
+</html>
