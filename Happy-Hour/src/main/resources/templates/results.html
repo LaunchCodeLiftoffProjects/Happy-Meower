@@ -7,6 +7,19 @@
 <div class="bg">
     <div class="container h-100">
         <div class="d-flex justify-content-center h-100">
+            <div class="container body-content">
+                <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+                <h2 class = "centered">Happy Hours Near You</h2>
+                <table class="table">
+                    <tr>
+                        <th>Map #</th>
+                        <th>Name</th>
+                        <th>Hours</th>
+                        <th>Distance(ml)</th>
+                    </tr>
+                </table>
+                <img src="/img/MapExample.png" alt="Google map example" style="width:432px;height:428px;">
+            </div>
         </div>
     </div>
 </div>
