@@ -2,41 +2,40 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<head> <!--Add this link to "fragments :: head"-->
-    <link th:href="@{/css/authentication.css}" rel="stylesheet"/>
-</head>
-
 <title th:text="${title}"></title>
 
-<body class="container bg">
+<!--Discuss if we should or want to add this font styling to happyhour.css-->
+<body class="container bg" style="font-family: Comic Sans MS, Comic Sans, cursive; font-weight: bold; color: white;">
 
-    <div class="page-header">
+    <div class="page-header text-center my-5">    <!--This header should be fragmented-->
         <h1>Happy Hour Locator</h1>
     </div>
 
-    <div class="navbar-header navibar">                     <!--This nav bar should be fragmented-->
-            <a th:href="@{/}" class="navbar-brand nav-home">Home</a>
-            <p th:text="${title}" class="navbar-brand nav-pageheader"></p>
+    <div class="navbar-header d-flex justify-content-flex-start text-center mb-4">  <!--This nav bar should be fragmented-->
+            <a th:href="@{/}" class="navbar-brand m-0 px-1 border">Home</a>
+            <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
     </div>
 
-    <form method="post">
-        <div class="form-group">
-            <label>Username
-                <input class="form-control" name ="username" id="username"> <!--id="username" placeholder for th:field=owner class field later-->
-            </label>
+    <div class="row d-flex justify-content-center">
+        <form method="post">
+            <div class="form-group">
+                <label>Username
+                    <input class="form-control" name ="username" id="username"> <!--id="username" placeholder for th:field=owner class field later-->
+                </label>
 
-        </div>
-        <div class="form-group">
-            <label>Password
-                <input class="form-control" name="password" id="password" type="password"> <!--id="password" placeholder for th:field=owner class field later-->
-            </label>
+            </div>
+            <div class="form-group">
+                <label>Password
+                    <input class="form-control" name="password" id="password" type="password"> <!--id="password" placeholder for th:field=owner class field later-->
+                </label>
 
-        </div>
+            </div>
 
-        <input type="submit" class="btn btn-primary" value="Log In" />
-    </form>
+            <input type="submit" class="btn btn-primary" value="Log In" />
+        </form>
+    </div>
 
-    <p>Don't have an account? <a href="">Register for one.</a></p>  <!--href="" placeholder for registration page-->
+    <p class="row d-flex justify-content-center my-2">Don't have an account?<a href="" class="ml-1">Register for one.</a></p>  <!--href="" placeholder for registration page-->
 
 </body>
 </html>
