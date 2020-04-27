@@ -8,9 +8,15 @@
     <div class="container h-100">
         <div class="d-flex justify-content-center h-100">
             <div class="container body-content">
-                <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+                <div class="page-header text-center my-5">
+                    <h1>Happy Hour Locator</h1>
+                </div>
+                <div class="navbar-header d-flex justify-content-flex-start text-center mb-4">
+                    <a th:href="@{/}" class="navbar-brand m-0 px-1 border">Home</a>
+                    <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
+                </div>
                 <h2 class = "centered">Happy Hours Near You</h2>
-                <table class="table">
+                <table style="float:left;">
                     <tr>
                         <th>Map #</th>
                         <th>Name</th>
@@ -18,7 +24,7 @@
                         <th>Distance(ml)</th>
                     </tr>
                 </table>
-                <img src="/img/MapExample.png" alt="Google map example" style="width:432px;height:428px;">
+                <img src="/img/MapExample.png" alt="Google map example" style="width:432px;height:428px;float:right;">
             </div>
         </div>
     </div>
