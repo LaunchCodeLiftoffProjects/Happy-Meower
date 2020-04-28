@@ -9,7 +9,7 @@ public class RegistrationController {
 
     @GetMapping("owner-registration")
     public String index(Model model) {
-        model.addAttribute("title","Owner Register");
+        model.addAttribute("title","Owner Registration");
         return "owner-registration";
     }
 }
