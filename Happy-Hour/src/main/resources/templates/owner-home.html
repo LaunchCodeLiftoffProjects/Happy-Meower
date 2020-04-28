@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<title th:text="${title}"></title>
+
+<body class="container bg" style="font-family: Comic Sans MS, Comic Sans, cursive; font-weight: bold; color: white;">
+
+<div class="navbar-header d-flex justify-content-flex-start text-center mb-4">  <!--This nav bar should be fragmented-->
+    <a th:href="@{/}" class="navbar-brand m-0">Home</a>
+    <p th:text="${title}" class="navbar-brand m-0 w-100"></p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+<form method="post">
+    <label>CREATE NEW HAPPY HOUR</label>
+    <div class="form-group">
+        <label>Business Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Business Name Here">
+    </div>
+    <div class="form-group">
+        <label>Business Address</label>
+        <input type="text" class="form-control" name="address" id="address" placeholder="Street Name & Number">
+    </div>
+    <div class="form-group">
+        <label>City</label>
+        <input type="text" class="form-control" name="city" id="city" placeholder="Kansas City">
+    </div>
+    <div class="form-group">
+        <label>State & Zip Code</label>
+        <input type="text" class="form-control" name="state" id="state" placeholder="Missouri">
+        <input type="text" class="form-control" name="zip" id="zip" placeholder="64105">
+    </div>
+    <div class="form-group">
+        <label>Happy Hour Start Time</label>
+        <input type="text" class="form-control" name="hh-start" id="hh-start" placeholder="04:30 PM">
+    </div>
+    <div class="form-group">
+        <label>Happy Hour End Time</label>
+        <input type="text" class="form-control" name="ehh-end" id="hh-end" placeholder="06:30 PM">
+    </div>
+    <div class="form-group">
+        <label>Happy Hour Days of Week</label><br>
+        <input type="checkbox" id="monday" name="monday" value="monday"><label for="monday">Monday</label>
+        <input type="checkbox" id="tuesday" name="tuesday" value="tuesday"><label for="tuesday">Tuesday</label>
+        <input type="checkbox" id="wednesday" name="wednesday" value="wednesday"><label for="wednesday">Wednesday</label>
+        <input type="checkbox" id="thursday" name="thursday" value="thursday"><label for="thursday">Thursday</label><br>
+        <input type="checkbox" id="friday" name="friday" value="friday"><label for="friday">Friday</label>
+        <input type="checkbox" id="saturday" name="saturday" value="saturday"><label for="saturday">Saturday</label>
+        <input type="checkbox" id="sunday" name="sunday" value="sunday"><label for="sunday">Sunday</label>
+    </div>
+    <div class="col text-center">
+        <button class="btn btn-primary">Submit</button>
+    </div>
+</form>
+        </div>
+        <div class="col-xs-6">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Business</th>
+                    <th scope="col">Days of Week</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col">End Time</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">City, State, Zip</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
