@@ -14,4 +14,5 @@ public class HappyHourController {
         model.addAttribute("title", "Search Results");
         return "results";
     }
+
 }
