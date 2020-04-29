@@ -1,13 +1,23 @@
 package com.happyhour.HappyHour.models;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class HappyHour {
 
     private int id;
     private static int nextId = 1;
 
+    @NotBlank
+    @Size(min = 3, max = 65, message = "Name must be between 3 and 65 characters")
     private String name;
+
     private String dayOfWeek;
+
+    @NotBlank
+    @Size(max = 100, message = "Address too long")
     private String address;
+
     private int startTime;
     private int endTime;
 
