@@ -2,6 +2,9 @@ package com.happyhour.HappyHour.models;
 
 public class HappyHour {
 
+    private int id;
+    private static int nextId = 1;
+
     private String name;
     private String dayOfWeek;
     private String address;
@@ -14,6 +17,11 @@ public class HappyHour {
         this.address = address;
         this.startTime = startTime;
         this.endTime = endTime;
+        nextId++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
