@@ -2,6 +2,7 @@ package com.happyhour.HappyHour.models;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 
 public class HappyHour {
 
@@ -75,7 +76,7 @@ public class HappyHour {
     }
 
     @Override
-    public toString() {
+    public String toString() {
         return "HappyHour{" +
                 "name='" + name + '\'' +
                 ", dayOfWeek='" + dayOfWeek + '\'' +
@@ -83,5 +84,18 @@ public class HappyHour {
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HappyHour happyHour = (HappyHour) o;
+        return id == happyHour.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
