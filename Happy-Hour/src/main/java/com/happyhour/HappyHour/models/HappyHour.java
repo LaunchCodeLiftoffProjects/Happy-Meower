@@ -28,11 +28,15 @@ public class HappyHour {
         this.address = address;
         this.startTime = startTime;
         this.endTime = endTime;
-        nextId++;
+//        nextId++;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -77,12 +81,11 @@ public class HappyHour {
 
     @Override
     public String toString() {
-        return "HappyHour{" +
-                "name='" + name + '\'' +
-                ", dayOfWeek='" + dayOfWeek + '\'' +
-                ", address='" + address + '\'' +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
+        return "{"   + name +
+                ", " + dayOfWeek +
+                ", " + address +
+                ", " + startTime +
+                ", " + endTime +
                 '}';
     }
 
