@@ -26,5 +26,4 @@ public class HomeController {
         return "user-view";
 
     }
-
 }

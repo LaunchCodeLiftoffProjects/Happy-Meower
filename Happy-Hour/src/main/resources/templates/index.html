@@ -5,12 +5,12 @@
 <title th:text="${title}"></title>
 <body >
 <div class="bg">
-    <div class="d-flex flex-column justify-content-end" >
-        <div class="d-flex" >
+    <div class="container h-100" >
+        <div class="d-flex justify-content-end" >
             <a th:href="@{'/owner-login'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>
         </div>
-        <div class="d-flex" style="height:45%">
-            <form th:action="@{results}" method="post">
+        <div class="d-flex justify-content-center" style="height:45%">
+            <form th:action="@{results}" method="post" class="d-flex flex-column">
                 <div class="searchbar">
 
                     <input class="search_input" type="text" name="searchTerm" placeholder="Hello World">
