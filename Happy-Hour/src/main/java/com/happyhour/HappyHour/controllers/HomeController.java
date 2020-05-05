@@ -13,7 +13,7 @@ public class HomeController {
 
     @RequestMapping("")
     public String index(Model model) {
-        HappyHourData data=new HappyHourData();
+        HappyHourData data=new HappyHourData();//instantiates temporary data
         model.addAttribute("title", "Test Page");
         model.addAttribute("happyHours",data.getHappyHours());
         return "index";

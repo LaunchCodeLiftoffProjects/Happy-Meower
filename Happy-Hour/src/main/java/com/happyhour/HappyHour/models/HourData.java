@@ -1,14 +1,16 @@
 package com.happyhour.HappyHour.models;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class HourData {
-    public static HappyHour findHHById(int id, Map<Integer,HappyHour> happyHours){
-        return happyHours.get(id);
-    }
 
+    /**
+     * Search all of happy hour by search term
+     *
+     * @param searchTerm The search term to look for.
+     * @param allHappyHours The list of happy hours to search.
+     * @return      List of all happy hours with the search term.
+     */
     public static ArrayList<HappyHour> searchHappyHour(String searchTerm, ArrayList<HappyHour> allHappyHours){
         ArrayList<HappyHour> temp= new ArrayList<>();
         for (HappyHour happyHour : allHappyHours) {
