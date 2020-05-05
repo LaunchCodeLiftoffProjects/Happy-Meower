@@ -20,22 +20,20 @@
         <form method="post">
             <div class="form-group">
                 <label>Username</label>
-                    <input class="form-control" name ="username" id="username"> <!--id="username" placeholder for th:field=owner class field later-->
+                    <input class="form-control" th:field="${loginFormDTO.username}">
                 </label>
-
+                <p class="error" th:errors="${loginFormDTO.username}"></p>
             </div>
             <div class="form-group">
                 <label>Password
-                    <input class="form-control" name="password" id="password" type="password"> <!--id="password" placeholder for th:field=owner class field later-->
+                    <input class="form-control" th:field="${loginFormDTO.password}" type="password">
                 </label>
-
+                <p class="error" th:errors="${loginFormDTO.password}"></p>
             </div>
 
             <input type="submit" class="btn btn-primary" value="Log In" />
         </form>
     </div>
-
-    <p class="row d-flex justify-content-center my-2">Don't have an account?<a th:href="@{'/owner-registration'}" class="ml-1">Register for one.</a></p>
-
+    <p class="row d-flex justify-content-center my-2">Don't have an account?<a href="/owner-registration">Register for one.</a></p>
 </body>
 </html>
