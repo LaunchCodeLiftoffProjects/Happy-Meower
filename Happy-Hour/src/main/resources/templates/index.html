@@ -6,19 +6,15 @@
 <body >
 <div class="bg">
     <div class="container h-100" >
-        <div class="d-flex justify-content-end" >
+        <div class="d-flex justify-content-end p-2" >
             <a th:href="@{'/owner-login'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>
         </div>
         <div class="d-flex justify-content-center" style="height:45%">
             <form th:action="@{results}" method="post" class="d-flex flex-column">
                 <div class="searchbar">
-
                     <input class="search_input" type="text" name="searchTerm" placeholder="Hello World">
                     <button class="search_icon" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-
-
                 </div>
-
             </form>
         </div>
         <div class="d-flex justify-content-center h-auto">
@@ -40,9 +36,7 @@
             </table>
         </div>
         <div class="d-flex justify-content-center">
-
             <a th:href="@{'/owner-registration'}" th:text="'Want to add your Happy Hour?'" class="btn btn-primary " role="button"></a>
-
         </div>
     </div>
 </div>
