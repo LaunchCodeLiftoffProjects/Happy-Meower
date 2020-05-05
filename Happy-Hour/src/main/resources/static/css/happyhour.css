@@ -1,3 +1,6 @@
+header,body{
+    background: #D8801A !important;
+}
 .bg{
     background-image: url("/img/HappyHourBG.png");
     height: 100%;

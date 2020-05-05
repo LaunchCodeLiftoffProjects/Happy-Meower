@@ -15,14 +15,28 @@
                     <a th:href="@{/}" class="navbar-brand m-0 px-1 border">Home</a>
                     <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
                 </div>
-                <h2 class = "centered">Happy Hours Near You</h2>
-                <table style="float:left;">
+                <h2 class = "centered">Happy Hours with </h2>
+                <h2 class="centered" th:text="${searchTerm}"></h2>
+                <table class="table">
+                    <thead>
                     <tr>
-                        <th>Map #</th>
-                        <th>Name</th>
-                        <th>Hours</th>
-                        <th>Distance(ml)</th>
+                        <th>Happy Hours</th>
                     </tr>
+                    </thead>
+                    <tr>
+                        <th> Name </th>
+                        <th> Address </th>
+                        <th> Times </th>
+                    </tr>
+                    <tbody>
+                    <th:block th:each="happy : ${happyHours}">
+                        <tr>
+                            <td th:text="${happy.name}" ></td>
+                            <td th:text="${happy.address}" ></td>
+                            <td th:text="${happy.startTime}+' - '+${happy.endTime}" ></td>
+                        </tr>
+                    </th:block>
+                    </tbody>
                 </table>
                 <img src="/img/MapExample.png" alt="Google map example" style="width:432px;height:428px;float:right;">
             </div>

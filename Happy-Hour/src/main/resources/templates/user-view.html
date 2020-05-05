@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<title th:text="${title}"></title>
+<body >
+<div class="bg">
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th th:text="${happyHour.name}"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${happyHour.address}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${happyHour.startTime}+' - '+${happyHour.endTime}"></td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
