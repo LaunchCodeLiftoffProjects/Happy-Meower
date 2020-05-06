@@ -1,13 +1,13 @@
 package com.happyhour.HappyHour.models;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
-public class HappyHour {
+@Entity
+public class HappyHour extends AbstractEntity {
 
-    private int id;
-    private static int nextId = 1;
 
     @NotBlank
     @Size(min = 3, max = 65, message = "Name must be between 3 and 65 characters")
@@ -28,16 +28,10 @@ public class HappyHour {
         this.address = address;
         this.startTime = startTime;
         this.endTime = endTime;
-//        nextId++;
     }
 
-    public int getId() {
-        return id;
-    }
+    public HappyHour() {}
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -89,16 +83,4 @@ public class HappyHour {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        HappyHour happyHour = (HappyHour) o;
-        return id == happyHour.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
