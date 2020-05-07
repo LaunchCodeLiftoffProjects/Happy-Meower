@@ -13,7 +13,7 @@ public class HappyHourData {
 
     public HappyHourData(){
 
-        //temporary data to be deleted after integration
+        /*temporary data to be deleted after integration
         HappyHour temp1=new HappyHour("Bar 1", "Monday-Friday","321 Main St.", 14,16);
         add(temp1);
         HappyHour temp2=new HappyHour("Bar 2", "Tuesday-Friday","123 Broadway Ave.", 14,16);
@@ -24,6 +24,7 @@ public class HappyHourData {
         add(temp4);
         HappyHour temp5=new HappyHour("Bar 5", "Saturday-Sunday","111 One st.", 14,16);
         add(temp5);
+        */
 
     }
 
@@ -32,12 +33,6 @@ public class HappyHourData {
         return happyHours;
     }
 
-    //add a happy hour
-    public static void add(HappyHour happyHour) {
-        happyHour.setId(id);
-        happyHours.put(id, happyHour);
-        id++;
-    }
 
     //remove a happy hour
     public static void remove(int id) {
