@@ -11,7 +11,7 @@ public class HourData {
      * @param allHappyHours The list of happy hours to search.
      * @return      List of all happy hours with the search term.
      */
-    public static ArrayList<HappyHour> searchHappyHour(String searchTerm, ArrayList<HappyHour> allHappyHours){
+    public static ArrayList<HappyHour> searchHappyHour(String searchTerm, Iterable<HappyHour> allHappyHours){
         ArrayList<HappyHour> temp= new ArrayList<>();
         for (HappyHour happyHour : allHappyHours) {
             if (happyHour.toString().toLowerCase().contains(searchTerm.toLowerCase())) {

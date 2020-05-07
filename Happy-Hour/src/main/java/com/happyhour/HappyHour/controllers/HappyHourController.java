@@ -1,6 +1,5 @@
 package com.happyhour.HappyHour.controllers;
 
-import com.happyhour.HappyHour.data.HappyHourData;
 import com.happyhour.HappyHour.data.HappyHourRepository;
 import com.happyhour.HappyHour.models.HappyHour;
 import com.happyhour.HappyHour.models.HourData;
@@ -11,7 +10,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 
 @Controller
 @RequestMapping
@@ -19,7 +17,6 @@ public class HappyHourController {
 
     @Autowired
     private HappyHourRepository happyHourRepository;
-
 
     @GetMapping("results")
     public String displayAllHappyHours(Model model) {
@@ -29,9 +26,8 @@ public class HappyHourController {
 
     @PostMapping("results")
     public String searchHH(Model model, @RequestParam String searchTerm){
-        ArrayList<HappyHour>temp=new ArrayList<>(HappyHourData.getHappyHours().values());
         model.addAttribute("searchTerm",searchTerm);
-        model.addAttribute("happyHours",HourData.searchHappyHour(searchTerm, temp));
+        model.addAttribute("happyHours",HourData.searchHappyHour(searchTerm, happyHourRepository.findAll()));
         return "results";
     }
 
