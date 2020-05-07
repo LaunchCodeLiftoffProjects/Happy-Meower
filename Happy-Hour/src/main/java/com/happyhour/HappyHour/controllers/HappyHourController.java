@@ -52,7 +52,7 @@ public class HappyHourController {
         }
 
         happyHourRepository.save(newHappyHour);
-        return "redirect:";
+        return "owner-home";
     }
 
 }
