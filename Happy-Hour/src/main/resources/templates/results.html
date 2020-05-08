@@ -38,10 +38,82 @@
                     </th:block>
                     </tbody>
                 </table>
-                <img src="/img/MapExample.png" alt="Google map example" style="width:432px;height:428px;float:right;">
             </div>
         </div>
     </div>
 </div>
+<h3>My Google Maps Demo</h3>
+<!--The div element for the map -->
+<div id="map" style="width:1000px; height: 500px; margin-left: auto; margin-right: auto"><!--MAP GOES HERE--></div>
+<script th:inline="javascript">
+  var geocoder;
+  var map;
+
+  /*<![CDATA[*/
+    var searchedZip = /*[[${zipcode}]]*/;                 //Access data from model attribute
+    var addressList = /*[[${addressList}]]*/;             //Access data from model attribute
+  /*]]>*/
+
+   <!-- Comment Notes:
+        The above code should be able to access data from a controller.
+
+        searchedZip is variable to hold a zipcode in string format provided by the Seeker to center the map over
+        the location to look for happy hours.
+
+        addressArray is an array of addresses in string format.  This will populate the map with markers of
+        said addresses.  This list should be generated when happy hours populate on search results page
+        after a search.
+
+        Example format of data:
+        searchedZip = "64116";
+        addressArray = [
+          "1700 NE Clubhouse Dr, North Kansas City, 64116",   //home
+          "1501 Howell St, North Kansas City, MO 64116",      //climbing gym
+          "1761 Burlington St, North Kansas City, MO 64116",  //chickenn and pickle
+          "119 Armour Rd, North Kansas City, MO 64116",       //calibration brewery
+          "1920 Diamond Pkwy, North Kansas City, MO 64116"    //old chicago nkc
+    ]-->
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder();
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      mapTypeId: 'roadmap'
+    });
+
+    function geocodeZipAndCenter(zip){
+      geocoder.geocode( { 'address': zip}, function(results, status) {
+        if (status == 'OK') {
+          map.setCenter(results[0].geometry.location);
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
+
+    function geocodeAddressesAndMark(addressList){
+      for (var i = 0; i < addressList.length; i++) {
+        geocoder.geocode( { 'address': addressList[i]}, function(results, status) {
+          if (status == 'OK') {
+            var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    }
+
+    geocodeZipAndCenter(searchedZip);
+
+    geocodeAddressesAndMark(addressArray);
+  }
+</script>
+<script th:inline="javascript" async="async" defer="defer"
+        src=>   <!--MAP API Link REDACTED for Security-->
+</script>  <!--This script verifies Google API Key, establishes link with registered API products, and initialize Map Script-->
 </body>
 </html>
