@@ -34,7 +34,7 @@ public class HappyHourController {
     @GetMapping("owner-home")
     public String displayCreateHappyHourFormAndTable(Model model) {
         model.addAttribute("title", "Owner Home");
-        model.addAttribute("happyhours", happyHourRepository.findAll());
+        model.addAttribute("happyHours", happyHourRepository.findAll());
         model.addAttribute(new HappyHour());
         return "owner-home";
     }
@@ -48,7 +48,7 @@ public class HappyHourController {
         }
 
         happyHourRepository.save(newHappyHour);
-        return "owner-home";
+        return "redirect:owner-home";
     }
 
 }
