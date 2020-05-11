@@ -28,7 +28,7 @@
                 <th:block th:each="happy : ${happyHours}">
                     <tr>
                         <td>
-                            <a th:href="@{'/user-view/'+${happy.key}}" th:text="${happy.value}" class="btn btn-secondary " role="button" ></a>
+                            <a th:href="@{'/user-view/'+${happy.id}}" th:text="${happy}" class="btn btn-secondary " role="button" ></a>
                         </td>
                     </tr>
                 </th:block>

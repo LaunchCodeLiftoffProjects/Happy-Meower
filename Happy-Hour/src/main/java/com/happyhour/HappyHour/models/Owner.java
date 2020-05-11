@@ -10,12 +10,12 @@ import javax.validation.constraints.Size;
 public class Owner extends AbstractEntity {
 
     @NotBlank
-    @Size(min=3, max = 50, message = "Username must be between 3 and 50 characters long")
     private String username;
 
     @NotBlank
-    @Size(min = 8, max = 50, message = "Password must be between 3 and 50 characters long")
     private String pwHash;
+
+    public Owner(){}
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
