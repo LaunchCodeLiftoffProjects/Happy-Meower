@@ -82,7 +82,7 @@ public class AuthenticationController {
         ownerRepository.save(newOwner);
         setOwnerInSession(request.getSession(), newOwner);
 
-        return "redirect:";
+        return "redirect:/owner-login";
     }
 
     @GetMapping("/owner-login")
