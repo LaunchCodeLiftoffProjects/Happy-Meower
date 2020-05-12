@@ -50,51 +50,48 @@
   var map;
 
   /*<![CDATA[*/
-    var addressToCenterMap = /*[[${addressToCenterMap}]]*/;                 //Access data from model attribute
-    var addressList = /*[[${addressList}]]*/;             //Access data from model attribute
+    var addressToCenterMap = /*[[${addressToCenterMap}]]*/;
+    var addressList = /*[[${addressList}]]*/;
   /*]]>*/
 
   function initMap() {
     geocoder = new google.maps.Geocoder();
 
     map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
-      mapTypeId: 'roadmap'
+    zoom: 15,
+    mapTypeId: 'roadmap'
     });
 
-    function geocodeZipAndCenter(address){
-      geocoder.geocode( { 'address': address}, function(results, status) {
-        if (status == 'OK') {
-          map.setCenter(results[0].geometry.location);
-        } else {
-          alert('Geocode was not successful for the following reason: ' + status);
-        }
-      });
-    }
+    var bounds = new google.maps.LatLngBounds();
 
-    function geocodeAddressesAndMark(addressList){
-      for (var i = 0; i < addressList.length; i++) {
-        geocoder.geocode( { 'address': addressList[i]}, function(results, status) {
-          if (status == 'OK') {
-            var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
+    function geocodeAddressesAndMarkAndCenter(addressList){
+        for (var i = 0; i < addressList.length; i++) {
+            geocoder.geocode( { 'address': addressList[i]}, function(results, status) {
+                if (status == 'OK') {
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+
+                bounds.extend(results[0].geometry.location);
+                map.fitBounds(bounds);
+                if(map.zoom > 15) {
+                    map.setZoom(15);
+                }
             });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
+        }
     }
 
-    geocodeZipAndCenter(addressToCenterMap);
+    geocodeAddressesAndMarkAndCenter(addressList);
 
-    geocodeAddressesAndMark(addressList);
   }
 
 </script>
 <script th:inline="javascript" async="async" defer="defer"
-        src=${MAP_API_KEY}>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC9CJzXEzUvpuomQqTVFL19juX8IaJVWw&callback=initMap">
 </script>  <!--This script verifies Google API Key, establishes link with registered API products, and initialize Map Script-->
 </body>
 </html>

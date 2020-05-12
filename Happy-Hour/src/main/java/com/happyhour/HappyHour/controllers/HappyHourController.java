@@ -36,7 +36,6 @@ public class HappyHourController {
 
         model.addAttribute("searchTerm",searchTerm);
         model.addAttribute("happyHours",searchResults);
-        model.addAttribute("addressToCenterMap", resultAddresses.get(0));
         model.addAttribute("addressList",resultAddresses);
 
         return "results";
