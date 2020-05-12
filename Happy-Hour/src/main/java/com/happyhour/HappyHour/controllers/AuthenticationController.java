@@ -5,7 +5,6 @@ import com.happyhour.HappyHour.models.Owner;
 import com.happyhour.HappyHour.models.dto.LoginFormDTO;
 import com.happyhour.HappyHour.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
