@@ -50,7 +50,7 @@
   var map;
 
   /*<![CDATA[*/
-    var searchedZip = /*[[${zipcode}]]*/;                 //Access data from model attribute
+    var addressToCenterMap = /*[[${addressToCenterMap}]]*/;                 //Access data from model attribute
     var addressList = /*[[${addressList}]]*/;             //Access data from model attribute
   /*]]>*/
 
@@ -62,8 +62,8 @@
       mapTypeId: 'roadmap'
     });
 
-    function geocodeZipAndCenter(zip){
-      geocoder.geocode( { 'address': zip}, function(results, status) {
+    function geocodeZipAndCenter(address){
+      geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == 'OK') {
           map.setCenter(results[0].geometry.location);
         } else {
@@ -87,7 +87,7 @@
       }
     }
 
-    geocodeZipAndCenter(searchedZip);
+    geocodeZipAndCenter(addressToCenterMap);
 
     geocodeAddressesAndMark(addressList);
   }
