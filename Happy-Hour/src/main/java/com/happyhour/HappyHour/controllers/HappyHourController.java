@@ -10,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 
 @Controller
 @RequestMapping
@@ -26,8 +27,17 @@ public class HappyHourController {
 
     @PostMapping("results")
     public String searchHH(Model model, @RequestParam String searchTerm){
+        ArrayList<HappyHour> searchResults = HourData.searchHappyHour(searchTerm, happyHourRepository.findAll());
+        ArrayList<String> resultAddresses = new ArrayList<>();
+
+        for (HappyHour result : searchResults) {
+            resultAddresses.add(result.getAddress());
+        }
+
         model.addAttribute("searchTerm",searchTerm);
-        model.addAttribute("happyHours",HourData.searchHappyHour(searchTerm, happyHourRepository.findAll()));
+        model.addAttribute("happyHours",searchResults);
+        model.addAttribute("addressList",resultAddresses);
+
         return "results";
     }
 
