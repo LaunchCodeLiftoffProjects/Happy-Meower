@@ -1,6 +1,8 @@
 package com.happyhour.HappyHour;
 
 import com.happyhour.HappyHour.controllers.AuthenticationController;
+import com.happyhour.HappyHour.controllers.HomeController;
+import com.happyhour.HappyHour.data.HappyHourRepository;
 import com.happyhour.HappyHour.data.OwnerRepository;
 import com.happyhour.HappyHour.models.Owner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,8 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
     @Autowired
     AuthenticationController authenticationController;
 
-    private static final List<String> whitelist = Arrays.asList("/js", "/owner-login","/owner-registration","/","/results");
+
+    private static final List<String> whitelist = Arrays.asList("/owner-login","/owner-registration","/","/results", "/css/bootstrap.css", "/user-view/{hhId}", "/css/happyhour.css",);
 
     private static boolean isWhitelisted(String path) {
         for (String pathRoot : whitelist) {
