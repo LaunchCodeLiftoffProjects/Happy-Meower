@@ -6,6 +6,10 @@
 
 <body class="container bg" style="font-family: Comic Sans MS, Comic Sans, cursive; font-weight: bold; color: white;">
 
+<div class="page-header text-center my-5">    <!--This header should be fragmented-->
+    <h1>Happy Hour Locator</h1>
+</div>
+
 <div class="navbar-header d-flex justify-content-flex-start text-center mb-4">  <!--This nav bar should be fragmented-->
     <a th:href="@{/index}" class="navbar-brand m-0">Home</a>
     <p th:text="${title}" class="navbar-brand m-0 w-100"></p>
@@ -26,25 +30,25 @@
     </div>
     <div class="form-group">
         <label>Happy Hour Day of Week
-            <input th:field="${happyHour.dayOfWeek}" class="form-control" placeholder="Monday">
+            <input th:field="${happyHour.dayOfWeek}" class="form-control">
         </label>
         <p class="error" th:errors="${happyHour.dayOfWeek}"></p>
     </div>
     <div class="form-group">
         <label>Happy Hour Address
-            <input th:field="${happyHour.address}" class="form-control" placeholer="123 S. Mulberry St., Kansas City,  MO">
+            <input th:field="${happyHour.address}" class="form-control">
         </label>
         <p class="error" th:errors="${happyHour.address}"></p>
     </div>
     <div class="form-group">
         <label>Happy Hour Start Time
-            <input th:field="${happyHour.startTime}" class="form-control" placeholder="6">
+            <input th:field="${happyHour.startTime}" class="form-control">
         </label>
         <p class="error" th:errors="${happyHour.startTime}"></p>
     </div>
     <div class="form-group">
         <label>Happy Hour End Time
-            <input th:field="${happyHour.endTime}" class="form-control" placeholder="8">
+            <input th:field="${happyHour.endTime}" class="form-control">
         </label>
         <p class="error" th:errors="${happyHour.endTime}"></p>
     </div>
@@ -53,7 +57,7 @@
     </div>
 </form>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-12">
             <table class="table">
                 <thead>
                 <tr>
@@ -62,11 +66,16 @@
                     <th scope="col">Start Time</th>
                     <th scope="col">End Time</th>
                     <th scope="col">Address</th>
-                    <th scope="col">City, State, Zip</th>
                 </tr>
                 </thead>
                 <tbody>
-
+                    <tr th:each="happyHour : ${happyHours}">
+                        <td th:text="${happyHour.name}"></td>
+                        <td th:text="${happyHour.dayOfWeek}"></td>
+                        <td th:text="${happyHour.startTime}"></td>
+                        <td th:text="${happyHour.endTime}"></td>
+                        <td th:text="${happyHour.address}"></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
