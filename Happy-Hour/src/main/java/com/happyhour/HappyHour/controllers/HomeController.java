@@ -17,7 +17,7 @@ public class HomeController {
     @Autowired
     HappyHourRepository happyHourRepository;
 
-    @RequestMapping("")
+    @RequestMapping("index")
     public String index(Model model) {
         model.addAttribute("title", "Test Page");
         model.addAttribute("happyHours", happyHourRepository.findAll());
