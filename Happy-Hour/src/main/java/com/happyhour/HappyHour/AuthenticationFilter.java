@@ -24,11 +24,11 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
     AuthenticationController authenticationController;
 
 
-    private static final List<String> whitelist = Arrays.asList("/owner-login","/owner-registration","/","/results", "/css/bootstrap.css", "/css/happyhour.css", "/img/HappyHourBG.png");
+    private static final List<String> whitelist = Arrays.asList("/owner-login","/owner-registration","/index","/results", "/css", "/img", "/user-view");
 
     private static boolean isWhitelisted(String path) {
         for (String pathRoot : whitelist) {
-            if (path.equals(pathRoot)) {
+            if (path.startsWith(pathRoot)) {
                 return true;
             }
         }
