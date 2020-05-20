@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Controller
@@ -30,6 +31,9 @@ public class HomeController {
         if (optHH.isPresent()) {
             HappyHour hh = (HappyHour) optHH.get();
             model.addAttribute("happyHour", hh);
+            ArrayList<String> resultAddresses = new ArrayList<>();
+            resultAddresses.add(hh.getAddress());
+            model.addAttribute("addressList", resultAddresses);
             return "user-view";
         } else {
             return "redirect:../";
