@@ -12,6 +12,16 @@
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 </head>
 
+<div th:fragment="header" class="page-header text-center my-5">
+    <h1>Happy Hour Locator</h1>
+</div>
+
+<div th:fragment="navbar" class="navbar-header d-flex justify-content-flex-start text-center mb-4">
+    <a th:href="@{/index}" class="navbar-brand m-0 px-1 border">Home</a>
+    <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
+</div>
+
+
 <div th:fragment="map">
     <!--The div element for the map -->
     <div id="map" style="width:1000px; height: 500px; margin: auto auto 100px;"><!--MAP GOES HERE--></div>
