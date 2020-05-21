@@ -14,7 +14,7 @@ body,html{
     height: 100%;
 }
 
-body {
+.body_text {
     font-family: Comic Sans MS, Comic Sans, cursive;
     font-weight: bold; color: white;
 }
