@@ -7,14 +7,9 @@
 <!--Discuss if we should or want to add this font styling to happyhour.css-->
 <body class="container bg" style="font-family: Comic Sans MS, Comic Sans, cursive; font-weight: bold; color: white;">
 
-    <div class="page-header text-center my-5">    <!--This header should be fragmented-->
-        <h1>Happy Hour Locator</h1>
-    </div>
+    <div th:replace="fragments :: header"></div>
 
-    <div class="navbar-header d-flex justify-content-flex-start text-center mb-4">  <!--This nav bar should be fragmented-->
-            <a th:href="@{/index}" class="navbar-brand m-0 px-1 border">Home</a>
-            <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
-    </div>
+    <div th:replace="fragments :: navbar"></div>
 
     <div class="row d-flex justify-content-center">
         <form method="post">
