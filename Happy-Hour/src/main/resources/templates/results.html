@@ -8,13 +8,10 @@
     <div class="container h-100">
         <div class="d-flex justify-content-center h-100">
             <div class="container body-content">
-                <div class="page-header text-center my-5">
-                    <h1>Happy Hour Locator</h1>
-                </div>
-                <div class="navbar-header d-flex justify-content-flex-start text-center mb-4">
-                    <a th:href="@{/index}" class="navbar-brand m-0 px-1 border">Home</a>
-                    <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
-                </div>
+                <div th:replace="fragments :: header"></div>
+
+                <div th:replace="fragments :: navbar"></div>
+
                 <h2 class = "centered">Happy Hours with </h2>
                 <h2 class="centered" th:text="${searchTerm}"></h2>
                 <table class="table">
