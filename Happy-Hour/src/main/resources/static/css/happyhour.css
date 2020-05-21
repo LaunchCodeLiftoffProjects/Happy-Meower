@@ -14,6 +14,11 @@ body,html{
     height: 100%;
 }
 
+body {
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-weight: bold; color: white;
+}
+
 .searchbar{
     margin-bottom: auto;
     margin-top: auto;
