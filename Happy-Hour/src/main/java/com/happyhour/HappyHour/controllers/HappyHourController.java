@@ -27,6 +27,7 @@ public class HappyHourController {
 
     @PostMapping("results")
     public String searchHH(Model model, @RequestParam String searchTerm){
+        model.addAttribute("title", "Search Results");
         ArrayList<HappyHour> searchResults = HourData.searchHappyHour(searchTerm, happyHourRepository.findAll());
         ArrayList<String> resultAddresses = new ArrayList<>();
 
