@@ -9,29 +9,33 @@
 
         <div th:replace="fragments :: navbar"></div>
 
-        <h2 class = "centered">Happy Hours with </h2>
-        <h2 class="centered" th:text="${searchTerm}"></h2>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Happy Hours</th>
-            </tr>
-            </thead>
-            <tr>
-                <th> Name </th>
-                <th> Address </th>
-                <th> Times </th>
-            </tr>
-            <tbody>
-            <th:block th:each="happy : ${happyHours}">
+        <div class="d-flex w-100">
+            <h2 th:text="'Happy Hours with '+${searchTerm}"></h2>
+        </div>
+
+        <div>
+            <table class="table">
+                <thead>
                 <tr>
-                    <td th:text="${happy.name}" ></td>
-                    <td th:text="${happy.address}" ></td>
-                    <td th:text="${happy.startTime}+' - '+${happy.endTime}" ></td>
+                    <th>Happy Hours</th>
                 </tr>
-            </th:block>
-            </tbody>
-        </table>
+                </thead>
+                <tr>
+                    <th> Name </th>
+                    <th> Address </th>
+                    <th> Times </th>
+                </tr>
+                <tbody>
+                <th:block th:each="happy : ${happyHours}">
+                    <tr>
+                        <td th:text="${happy.name}" ></td>
+                        <td th:text="${happy.address}" ></td>
+                        <td th:text="${happy.startTime}+' - '+${happy.endTime}" ></td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
 
         <div th:replace="fragments :: map"></div>
     </div>
