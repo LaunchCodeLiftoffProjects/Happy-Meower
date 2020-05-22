@@ -4,84 +4,80 @@
 
 <title th:text="${title}"></title>
 
-<body class="container bg" style="font-family: Comic Sans MS, Comic Sans, cursive; font-weight: bold; color: white;">
+<body class="container body_text">
+    <div class="bg">
+        <div th:replace="fragments :: header"></div>
 
-<div class="page-header text-center my-5">    <!--This header should be fragmented-->
-    <h1>Happy Hour Locator</h1>
-</div>
+        <div th:replace="fragments :: navbar"></div>
 
-<div class="navbar-header d-flex justify-content-flex-start text-center mb-4">  <!--This nav bar should be fragmented-->
-    <a th:href="@{/index}" class="navbar-brand m-0 px-1 border">Home</a>
-    <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
-</div>
-<div class="d-flex justify-content-end p-2" >
-    <a th:href="@{'/logout'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Logout</a>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-6">
-<form method="post">
-    <label>CREATE NEW HAPPY HOUR</label>
-    <div class="form-group">
-        <label>Happy Hour Name
-            <input th:field="${happyHour.name}" class="form-control">
-        </label>
-        <p class="error" th:errors="${happyHour.name}"></p>
-    </div>
-    <div class="form-group">
-        <label>Happy Hour Day of Week
-            <input th:field="${happyHour.dayOfWeek}" class="form-control">
-        </label>
-        <p class="error" th:errors="${happyHour.dayOfWeek}"></p>
-    </div>
-    <div class="form-group">
-        <label>Happy Hour Address
-            <input th:field="${happyHour.address}" class="form-control">
-        </label>
-        <p class="error" th:errors="${happyHour.address}"></p>
-    </div>
-    <div class="form-group">
-        <label>Happy Hour Start Time
-            <input th:field="${happyHour.startTime}" class="form-control">
-        </label>
-        <p class="error" th:errors="${happyHour.startTime}"></p>
-    </div>
-    <div class="form-group">
-        <label>Happy Hour End Time
-            <input th:field="${happyHour.endTime}" class="form-control">
-        </label>
-        <p class="error" th:errors="${happyHour.endTime}"></p>
-    </div>
-    <div class="col text-center">
-        <input type="submit" value="Create" class="btn btn-primary">
-    </div>
-</form>
+        <div class="d-flex justify-content-end p-2" >
+            <a th:href="@{'/logout'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Logout</a>
         </div>
-        <div class="col-xs-12">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Business</th>
-                    <th scope="col">Days of Week</th>
-                    <th scope="col">Start Time</th>
-                    <th scope="col">End Time</th>
-                    <th scope="col">Address</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="happyHour : ${happyHours}">
-                        <td th:text="${happyHour.name}"></td>
-                        <td th:text="${happyHour.dayOfWeek}"></td>
-                        <td th:text="${happyHour.startTime}"></td>
-                        <td th:text="${happyHour.endTime}"></td>
-                        <td th:text="${happyHour.address}"></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+        <form method="post">
+            <label>CREATE NEW HAPPY HOUR</label>
+            <div class="form-group">
+                <label>Happy Hour Name
+                    <input th:field="${happyHour.name}" class="form-control">
+                </label>
+                <p class="error" th:errors="${happyHour.name}"></p>
+            </div>
+            <div class="form-group">
+                <label>Happy Hour Day of Week
+                    <input th:field="${happyHour.dayOfWeek}" class="form-control">
+                </label>
+                <p class="error" th:errors="${happyHour.dayOfWeek}"></p>
+            </div>
+            <div class="form-group">
+                <label>Happy Hour Address
+                    <input th:field="${happyHour.address}" class="form-control">
+                </label>
+                <p class="error" th:errors="${happyHour.address}"></p>
+            </div>
+            <div class="form-group">
+                <label>Happy Hour Start Time
+                    <input th:field="${happyHour.startTime}" class="form-control">
+                </label>
+                <p class="error" th:errors="${happyHour.startTime}"></p>
+            </div>
+            <div class="form-group">
+                <label>Happy Hour End Time
+                    <input th:field="${happyHour.endTime}" class="form-control">
+                </label>
+                <p class="error" th:errors="${happyHour.endTime}"></p>
+            </div>
+            <div class="col text-center">
+                <input type="submit" value="Create" class="btn btn-primary">
+            </div>
+        </form>
+                </div>
+                <div class="col-xs-12">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Business</th>
+                            <th scope="col">Days of Week</th>
+                            <th scope="col">Start Time</th>
+                            <th scope="col">End Time</th>
+                            <th scope="col">Address</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="happyHour : ${happyHours}">
+                                <td th:text="${happyHour.name}"></td>
+                                <td th:text="${happyHour.dayOfWeek}"></td>
+                                <td th:text="${happyHour.startTime}"></td>
+                                <td th:text="${happyHour.endTime}"></td>
+                                <td th:text="${happyHour.address}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
 
 </body>
 </html>

@@ -20,13 +20,14 @@ public class HomeController {
 
     @RequestMapping("index")
     public String index(Model model) {
-        model.addAttribute("title", "Test Page");
+        model.addAttribute("title", "Home");
         model.addAttribute("happyHours", happyHourRepository.findAll());
         return "index";
     }
 
     @GetMapping("user-view/{hhId}")
     public String displayHH(Model model, @PathVariable int hhId){
+        model.addAttribute("title", "User View");
         Optional optHH = happyHourRepository.findById(hhId);
         if (optHH.isPresent()) {
             HappyHour hh = (HappyHour) optHH.get();
