@@ -27,6 +27,7 @@ public class HomeController {
 
     @GetMapping("user-view/{hhId}")
     public String displayHH(Model model, @PathVariable int hhId){
+        model.addAttribute("title", "User View");
         Optional optHH = happyHourRepository.findById(hhId);
         if (optHH.isPresent()) {
             HappyHour hh = (HappyHour) optHH.get();
