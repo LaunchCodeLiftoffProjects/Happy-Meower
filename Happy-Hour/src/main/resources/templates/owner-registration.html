@@ -10,33 +10,30 @@
 
         <div th:replace="fragments :: navbar"></div>
 
-        <div class="container h-100">
-            <div class="d-flex justify-content-center">
-                <div class="row h-100 justify-content-center align-items-center">
-                    <form method="post">
-                        <div class="form-group">
-                            <label>Username
-                                <input class="form-control" th:field="${registerFormDTO.username}"/>
-                            </label>
-                            <p class="error" th:errors="${registerFormDTO.username}"></p>
-                        </div>
-                        <div class="form-group">
-                            <label>Password
-                                <input class="form-control" th:field="${registerFormDTO.password}" type="password"/>
-                            </label>
-                            <p class="error" th:errors="${registerFormDTO.password}"></p>
-                        </div>
-                        <div class="form-group">
-                            <label>Verify Password
-                                <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
-                            </label>
-                        </div>
-
-                        <input type="Submit" class="btn btn-primary" value="Register"/>
-                    </form>
+        <div class="row d-flex justify-content-center">
+            <form method="post">
+                <div class="form-group">
+                    <label>Username
+                        <input class="form-control" th:field="${registerFormDTO.username}"/>
+                    </label>
+                    <p class="error" th:errors="${registerFormDTO.username}"></p>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label>Password
+                        <input class="form-control" th:field="${registerFormDTO.password}" type="password"/>
+                    </label>
+                    <p class="error" th:errors="${registerFormDTO.password}"></p>
+                </div>
+                <div class="form-group">
+                    <label>Verify Password
+                        <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
+                    </label>
+                </div>
+
+                <input type="Submit" class="btn btn-primary" value="Register"/>
+            </form>
         </div>
+
     </div>
 </body>
 
