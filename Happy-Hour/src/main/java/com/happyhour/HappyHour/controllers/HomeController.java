@@ -20,7 +20,7 @@ public class HomeController {
 
     @RequestMapping("index")
     public String index(Model model) {
-        model.addAttribute("title", "Test Page");
+        model.addAttribute("title", "Home");
         model.addAttribute("happyHours", happyHourRepository.findAll());
         return "index";
     }
