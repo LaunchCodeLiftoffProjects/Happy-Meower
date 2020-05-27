@@ -21,7 +21,7 @@ public class HomeController {
     @RequestMapping("index")
     public String index(Model model) {
         model.addAttribute("title", "Home");
-        model.addAttribute("happyHours", happyHourRepository.findAll());
+        model.addAttribute("happyHours", happyHourRepository.findTop5ByOrderByIdDesc());
         return "index";
     }
 
