@@ -75,12 +75,10 @@ public class HappyHour extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "{"   + name +
-                ", " + dayOfWeek +
-                ", " + address +
-                ", " + startTime +
-                ", " + endTime +
-                '}';
+        return         name +
+                ": " + dayOfWeek +
+                " " + startTime +
+                " - " + endTime;
     }
 
 }
