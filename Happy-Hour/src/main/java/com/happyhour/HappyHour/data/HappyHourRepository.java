@@ -10,6 +10,4 @@ public interface HappyHourRepository extends CrudRepository<HappyHour, Integer> 
     public List<HappyHour> findTop5ByOrderByIdDesc();
 
     HappyHour findByName(String name);
-
-    HappyHour findByDayOfWeek(String dayOfWeek);
 }
