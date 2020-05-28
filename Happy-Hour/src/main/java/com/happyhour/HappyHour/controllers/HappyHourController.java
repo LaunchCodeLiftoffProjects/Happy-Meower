@@ -38,7 +38,7 @@ public class HappyHourController {
 
     @PostMapping("results")
     public String searchHH(Model model, @RequestParam String searchTerm, @RequestParam(required=false) DayOfWeek dayOfWeek){
-    public String searchHH(Model model, @RequestParam String searchTerm){
+
         model.addAttribute("title", "Search Results");
         ArrayList<HappyHour> searchResults = HourData.searchHappyHour(searchTerm, happyHourRepository.findAll());
         ArrayList<String> resultAddresses = new ArrayList<>();
@@ -46,17 +46,17 @@ public class HappyHourController {
         for (HappyHour result : searchResults) {
             resultAddresses.add(result.getAddress());
         }
-
         model.addAttribute("searchTerm",searchTerm);
-
-        //Quickly created search filtering.  Will need optimization.
+        //Will need optimization.
         if(searchTerm.equals("")){
             List<HappyHour> tempHappyHour=new ArrayList<>();
             List<DayTime> tempDayTime=dayTimeRepository.findByDayOfWeek(dayOfWeek);
             for (DayTime dayTime : tempDayTime) {
-                List<HappyHour> a = dayTime.getHappyHours();
-                a.removeAll(tempHappyHour);
-                tempHappyHour.addAll(a);
+                if(!dayTime.getHappyHours().isEmpty()) {
+                    List<HappyHour> a = dayTime.getHappyHours();
+                    a.removeAll(tempHappyHour);
+                    tempHappyHour.addAll(a);
+                }
             }
             model.addAttribute("happyHours",tempHappyHour);
         }
@@ -66,7 +66,6 @@ public class HappyHourController {
         if(dayOfWeek==null&& searchTerm.equals("")){
             return "redirect:";
         }
-        model.addAttribute("happyHours",searchResults);
         model.addAttribute("addressList",resultAddresses);
 
         return "results";

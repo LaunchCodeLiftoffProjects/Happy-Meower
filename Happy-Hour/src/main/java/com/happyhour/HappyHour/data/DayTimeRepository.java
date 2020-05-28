@@ -10,4 +10,5 @@ import java.util.List;
 public interface DayTimeRepository extends CrudRepository<DayTime,Integer> {
 
     List<DayTime> findByDayOfWeek(DayOfWeek dayOfWeek);
+
 }
