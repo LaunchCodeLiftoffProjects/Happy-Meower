@@ -1,7 +1,9 @@
 package com.happyhour.HappyHour.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -22,12 +24,17 @@ public class HappyHour extends AbstractEntity {
     private int startTime;
     private int endTime;
 
-    public HappyHour(String name, String dayOfWeek, String address, int startTime, int endTime) {
+    @ManyToOne
+    @NotNull(message = "Owner is required")
+    private Owner owner;
+
+    public HappyHour(String name, String dayOfWeek, String address, int startTime, int endTime, Owner owner) {
         this.name = name;
         this.dayOfWeek = dayOfWeek;
         this.address = address;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.owner = owner;
     }
 
     public HappyHour() {}
@@ -71,6 +78,14 @@ public class HappyHour extends AbstractEntity {
 
     public void setEndTime(int endTime) {
         this.endTime = endTime;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     @Override
