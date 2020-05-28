@@ -12,7 +12,7 @@
         <div class="d-flex justify-content-center" style="height:25%">
             <form th:action="@{results}" method="post" class="d-flex flex-column">
                 <div class="searchbar">
-                    <input class="search_input" type="text" name="searchTerm" placeholder="Hello World">
+                    <input class="search_input" type="text" name="searchTerm" placeholder="Search Happy Hours Near You">
                     <button class="search_icon" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                 </div><ul id="indexDay">
                 <li th:each="day:${dayOfWeek}" >
@@ -27,7 +27,7 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th> Hot Happy Hours</th>
+                    <th> New Happy Hours</th>
                 </tr>
                 </thead>
                 <tbody>

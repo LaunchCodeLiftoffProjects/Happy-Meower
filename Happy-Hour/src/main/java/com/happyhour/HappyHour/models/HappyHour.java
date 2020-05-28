@@ -53,10 +53,9 @@ public class HappyHour extends AbstractEntity {
 
     @Override
     public String toString() {
-        String temp="";
-        return "{"   + name +
+        return         name +
                 ", " + address +
-                ", " + getStandardDayTime() +
-                '}';
+                ", " + getStandardDayTime();
+
     }
 }

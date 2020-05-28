@@ -3,98 +3,36 @@
 <head th:replace="fragments :: head">
 </head>
 <title th:text="${title}"></title>
-<body >
-<div class="bg">
-    <div class="container h-100">
-        <div class="d-flex justify-content-center h-100">
-            <div class="container body-content">
-                <div class="page-header text-center my-5">
-                    <h1>Happy Hour Locator</h1>
-                </div>
-                <div class="navbar-header d-flex justify-content-flex-start text-center mb-4">
-                    <a th:href="@{/}" class="navbar-brand m-0 px-1 border">Home</a>
-                    <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
-                </div>
-                <h2 class = "centered">Happy Hours with </h2>
-                <h2 class="centered" th:text="${searchTerm}"></h2>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Happy Hours</th>
-                    </tr>
-                    </thead>
-                    <tr>
-                        <th> Name </th>
-                        <th> Address </th>
-                        <th> Times </th>
-                    </tr>
-                    <tbody>
-                    <th:block th:each="happy : ${happyHours}">
-                        <tr>
-                            <td th:text="${happy.name}" ></td>
-                            <td th:text="${happy.address}" ></td>
-                            <td th:text="${happy.getStandardDayTime()}" ></td>
-                        </tr>
-                    </th:block>
-                    </tbody>
-                </table>
-            </div>
+<body class="container body_text">
+    <div class="bg">
+        <div th:replace="fragments :: header"></div>
+
+        <div th:replace="fragments :: navbar"></div>
+
+        <div class="d-flex w-100">
+            <h2 th:text="'Happy Hours with '+${searchTerm}"></h2>
         </div>
+
+        <div class="h-auto pb-5">
+            <table class="table">
+                <tr>
+                    <th> Name </th>
+                    <th> Address </th>
+                    <th> Times </th>
+                </tr>
+                <tbody>
+                <th:block th:each="happy : ${happyHours}">
+                    <tr>
+                        <td th:text="${happy.name}" ></td>
+                        <td th:text="${happy.address}" ></td>
+                        <td th:text="${happy.getStandardDayTime()}" ></td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:replace="fragments :: map"></div>
     </div>
-</div>
-<h3>My Google Maps Demo</h3>
-<!--The div element for the map -->
-<div id="map" style="width:1000px; height: 500px; margin-left: auto; margin-right: auto"><!--MAP GOES HERE--></div>
-<script th:inline="javascript">
-  var geocoder;
-  var map;
-
-  /*<![CDATA[*/
-    var searchedZip = /*[[${zipcode}]]*/;                 //Access data from model attribute
-    var addressList = /*[[${addressList}]]*/;             //Access data from model attribute
-  /*]]>*/
-
-  function initMap() {
-    geocoder = new google.maps.Geocoder();
-
-    map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
-      mapTypeId: 'roadmap'
-    });
-
-    function geocodeZipAndCenter(zip){
-      geocoder.geocode( { 'address': zip}, function(results, status) {
-        if (status == 'OK') {
-          map.setCenter(results[0].geometry.location);
-        } else {
-          alert('Geocode was not successful for the following reason: ' + status);
-        }
-      });
-    }
-
-    function geocodeAddressesAndMark(addressList){
-      for (var i = 0; i < addressList.length; i++) {
-        geocoder.geocode( { 'address': addressList[i]}, function(results, status) {
-          if (status == 'OK') {
-            var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-            });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
-    }
-
-    geocodeZipAndCenter(searchedZip);
-
-    geocodeAddressesAndMark(addressArray);
-  }
-
-</script>
-<script th:inline="javascript" async="async" defer="defer"
-        src=${MAP_API_KEY}>
-</script>  <!--This script verifies Google API Key, establishes link with registered API products, and initialize Map Script-->
 </body>
 </html>

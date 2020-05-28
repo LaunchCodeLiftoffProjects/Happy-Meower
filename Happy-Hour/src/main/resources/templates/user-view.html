@@ -5,8 +5,8 @@
 <title th:text="${title}"></title>
 <body >
 <div class="bg">
-    <div class="container h-100">
-        <div class="d-flex justify-content-center h-100">
+    <div class="container">
+        <div class="d-flex justify-content-center h-auto pb-5">
             <table class="table">
                 <thead>
                 <tr>
@@ -23,9 +23,14 @@
                 </tbody>
 
             </table>
+
         </div>
+
+        <div th:replace="fragments :: map"></div>
+
     </div>
 </div>
+
 </body>
 
 </html>

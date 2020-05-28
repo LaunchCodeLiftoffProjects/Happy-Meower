@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+
 @Controller
 @RequestMapping
 public class HappyHourController {
@@ -37,6 +38,15 @@ public class HappyHourController {
 
     @PostMapping("results")
     public String searchHH(Model model, @RequestParam String searchTerm, @RequestParam(required=false) DayOfWeek dayOfWeek){
+    public String searchHH(Model model, @RequestParam String searchTerm){
+        model.addAttribute("title", "Search Results");
+        ArrayList<HappyHour> searchResults = HourData.searchHappyHour(searchTerm, happyHourRepository.findAll());
+        ArrayList<String> resultAddresses = new ArrayList<>();
+
+        for (HappyHour result : searchResults) {
+            resultAddresses.add(result.getAddress());
+        }
+
         model.addAttribute("searchTerm",searchTerm);
 
         //Quickly created search filtering.  Will need optimization.
@@ -56,6 +66,9 @@ public class HappyHourController {
         if(dayOfWeek==null&& searchTerm.equals("")){
             return "redirect:";
         }
+        model.addAttribute("happyHours",searchResults);
+        model.addAttribute("addressList",resultAddresses);
+
         return "results";
     }
 

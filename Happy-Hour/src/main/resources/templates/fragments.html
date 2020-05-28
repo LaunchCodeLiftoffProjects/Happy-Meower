@@ -11,5 +11,68 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 </head>
+
+<div th:fragment="header" class="page-header text-center my-5">
+    <h1>Happy Hour Locator</h1>
+</div>
+
+<div th:fragment="navbar" class="navbar-header d-flex justify-content-flex-start text-center mb-4 w-100">
+    <a th:href="@{/index}" class="navbar-brand m-0 px-1 border">Home</a>
+    <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
+</div>
+
+
+<div th:fragment="map">
+    <!--The div element for the map -->
+    <div id="map" style="width:1000px; height: 500px; margin: auto auto 100px;"><!--MAP GOES HERE--></div>
+    <script th:inline="javascript">
+  var geocoder;
+  var map;
+
+  /*<![CDATA[*/
+    var addressList = /*[[${addressList}]]*/;
+  /*]]>*/
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder();
+
+    map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    mapTypeId: 'roadmap'
+    });
+
+    var bounds = new google.maps.LatLngBounds();
+
+    function geocodeAddressesAndMarkAndCenter(addressList){
+        for (var i = 0; i < addressList.length; i++) {
+            geocoder.geocode( { 'address': addressList[i]}, function(results, status) {
+                if (status == 'OK') {
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+
+                bounds.extend(results[0].geometry.location);
+                map.fitBounds(bounds);
+                if(map.zoom > 15) {
+                    map.setZoom(15);
+                }
+            });
+        }
+    }
+
+    geocodeAddressesAndMarkAndCenter(addressList);
+
+  }
+
+</script>
+    <script th:inline="javascript" async="async" defer="defer"
+            src=REDACTED>
+    </script>  <!--This script verifies Google API Key, establishes link with registered API products, and initialize Map Script-->
+</div>
+
 </body>
 </html>

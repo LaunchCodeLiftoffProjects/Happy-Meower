@@ -4,36 +4,32 @@
 
 <title th:text="${title}"></title>
 
-<!--Discuss if we should or want to add this font styling to happyhour.css-->
-<body class="container bg" style="font-family: Comic Sans MS, Comic Sans, cursive; font-weight: bold; color: white;">
+<body class="container body_text">
+    <div class="bg">
 
-    <div class="page-header text-center my-5">    <!--This header should be fragmented-->
-        <h1>Happy Hour Locator</h1>
+        <div th:replace="fragments :: header"></div>
+
+        <div th:replace="fragments :: navbar"></div>
+
+        <div class="row d-flex justify-content-center">
+            <form method="post">
+                <div class="form-group">
+                    <label>Username
+                        <input class="form-control" th:field="${loginFormDTO.username}">
+                    </label>
+                    <p class="error" th:errors="${loginFormDTO.username}"></p>
+                </div>
+                <div class="form-group">
+                    <label>Password
+                        <input class="form-control" th:field="${loginFormDTO.password}" type="password">
+                    </label>
+                    <p class="error" th:errors="${loginFormDTO.password}"></p>
+                </div>
+
+                <input type="submit" class="btn btn-primary" value="Log In" />
+            </form>
+        </div>
+        <p class="row d-flex justify-content-center my-2">Don't have an account?<a href="/owner-registration">Register for one.</a></p>
     </div>
-
-    <div class="navbar-header d-flex justify-content-flex-start text-center mb-4">  <!--This nav bar should be fragmented-->
-            <a th:href="@{/}" class="navbar-brand m-0 px-1 border">Home</a>
-            <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
-    </div>
-
-    <div class="row d-flex justify-content-center">
-        <form method="post">
-            <div class="form-group">
-                <label>Username</label>
-                    <input class="form-control" th:field="${loginFormDTO.username}">
-                </label>
-                <p class="error" th:errors="${loginFormDTO.username}"></p>
-            </div>
-            <div class="form-group">
-                <label>Password
-                    <input class="form-control" th:field="${loginFormDTO.password}" type="password">
-                </label>
-                <p class="error" th:errors="${loginFormDTO.password}"></p>
-            </div>
-
-            <input type="submit" class="btn btn-primary" value="Log In" />
-        </form>
-    </div>
-    <p class="row d-flex justify-content-center my-2">Don't have an account?<a href="/owner-registration">Register for one.</a></p>
 </body>
 </html>
