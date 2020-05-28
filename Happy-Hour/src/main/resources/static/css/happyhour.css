@@ -46,3 +46,53 @@ body,html{
     color: #e74c3c;
     text-decoration:none;
 }
+
+.hideawayMONDAY{
+
+display:none;
+}
+#MONDAY:checked ~ .hideawayMONDAY{
+color:black;
+  display:block;
+}
+.hideawayTUESDAY{
+display:none;
+}
+#TUESDAY:checked ~ .hideawayTUESDAY{
+  display:block;
+}
+.hideawayWEDNESDAY{
+display:none;
+}
+#WEDNESDAY:checked ~ .hideawayWEDNESDAY{
+  display:block;
+}
+.hideawayTHURSDAY{
+display:none;
+}
+#THURSDAY:checked ~ .hideawayTHURSDAY{
+  display:block;
+}
+.hideawayFRIDAY{
+display:none;
+}
+#FRIDAY:checked ~ .hideawayFRIDAY{
+  display:block;
+}
+.hideawaySATURDAY{
+display:none;
+}
+#SATURDAY:checked ~ .hideawaySATURDAY{
+  display:block;
+}
+.hideawaySUNDAY{
+display:none;
+}
+#SUNDAY:checked ~ .hideawaySUNDAY{
+  display:block;
+}
+
+ul#indexDay li{
+height:20%;
+ display:inline;
+ }

@@ -1,37 +1,33 @@
 package com.happyhour.HappyHour.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.Objects;
+import java.util.List;
 
 @Entity
 public class HappyHour extends AbstractEntity {
-
 
     @NotBlank
     @Size(min = 3, max = 65, message = "Name must be between 3 and 65 characters")
     private String name;
 
-    private String dayOfWeek;
+    @ManyToMany
+    private List<DayTime> dayTimes;
 
     @NotBlank
     @Size(max = 100, message = "Address too long")
     private String address;
 
-    private int startTime;
-    private int endTime;
 
-    public HappyHour(String name, String dayOfWeek, String address, int startTime, int endTime) {
+    public HappyHour(String name, String address, List<DayTime> dayTimes) {
         this.name = name;
-        this.dayOfWeek = dayOfWeek;
         this.address = address;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.dayTimes=dayTimes;
     }
 
-    public HappyHour() {}
-
+    public HappyHour() { }
 
     public String getName() {
         return name;
@@ -41,46 +37,26 @@ public class HappyHour extends AbstractEntity {
         this.name = name;
     }
 
-    public String getDayOfWeek() {
-        return dayOfWeek;
+    public List<DayTime> getDayTimes() {
+        return dayTimes;
     }
 
-    public void setDayOfWeek(String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
-    }
+    public void setDayTimes(List<DayTime> dayTimes) { this.dayTimes = dayTimes; }
 
-    public String getAddress() {
-        return address;
-    }
+    public String getAddress() { return address; }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    public void setAddress(String address) { this.address = address; }
 
-    public int getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(int startTime) {
-        this.startTime = startTime;
-    }
-
-    public int getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(int endTime) {
-        this.endTime = endTime;
+    public String getStandardDayTime(){
+        return HourData.getStandardDayTime(dayTimes);
     }
 
     @Override
     public String toString() {
+        String temp="";
         return "{"   + name +
-                ", " + dayOfWeek +
                 ", " + address +
-                ", " + startTime +
-                ", " + endTime +
+                ", " + getStandardDayTime() +
                 '}';
     }
-
 }

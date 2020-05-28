@@ -33,7 +33,7 @@
                         <tr>
                             <td th:text="${happy.name}" ></td>
                             <td th:text="${happy.address}" ></td>
-                            <td th:text="${happy.startTime}+' - '+${happy.endTime}" ></td>
+                            <td th:text="${happy.getStandardDayTime()}" ></td>
                         </tr>
                     </th:block>
                     </tbody>
