@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
-<body>
-<head th:fragment="head">
+
+<div th:fragment="head">
     <!-- Bootstrap stylesheets and script -->
+
+    <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
     <link th:href="@{/css/happyhour.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
-</head>
+
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script></head>
+</div>
 
 <div th:fragment="header" class="page-header text-center my-5">
     <h1>Happy Hour Locator</h1>
@@ -19,6 +23,7 @@
 <div th:fragment="navbar" class="navbar-header d-flex justify-content-flex-start text-center mb-4 w-100">
     <a th:href="@{/index}" class="navbar-brand m-0 px-1 border">Home</a>
     <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
+    <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
 </div>
 
 
@@ -74,5 +79,5 @@
     </script>  <!--This script verifies Google API Key, establishes link with registered API products, and initialize Map Script-->
 </div>
 
-</body>
+<body></body>
 </html>

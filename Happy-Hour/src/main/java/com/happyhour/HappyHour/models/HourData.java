@@ -34,6 +34,9 @@ public class HourData {
      * @return          String format for daytime(DayOfWeek: startTime - EndTime|...)
      */
     public static String getStandardDayTime(List<DayTime> dayTimes){
+        if(dayTimes.isEmpty()){
+            return "no times added";
+        }
         StringBuilder temp= new StringBuilder(dayTimes.get(0).getDayOfWeek().toString() + ":" + HourData.getStandardTime(dayTimes.get(0).getTime()));//stores the first entry
         int counter=0; //stores the index of the last entry in a block
 

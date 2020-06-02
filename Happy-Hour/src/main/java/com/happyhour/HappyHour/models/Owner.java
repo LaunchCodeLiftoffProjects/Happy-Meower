@@ -4,7 +4,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
 public class Owner extends AbstractEntity {
@@ -22,6 +21,10 @@ public class Owner extends AbstractEntity {
     public Owner(String username, String password) {
         this.username = username;
         this.pwHash = encoder.encode(password);
+    }
+
+    public String getPwHash() {
+        return pwHash;
     }
 
     public String getUsername() {
