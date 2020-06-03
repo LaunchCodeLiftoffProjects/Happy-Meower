@@ -18,7 +18,7 @@
                     <td th:text="${happyHour.address}"></td>
                 </tr>
                 <tr>
-                    <td th:text="${happyHour.startTime}+' - '+${happyHour.endTime}"></td>
+                    <td th:text="${happyHour.getStandardDayTime()}"></td>
                 </tr>
                 </tbody>
 

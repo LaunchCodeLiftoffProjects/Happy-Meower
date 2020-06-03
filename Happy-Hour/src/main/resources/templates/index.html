@@ -9,26 +9,32 @@
         <div class="d-flex justify-content-end p-2" >
             <a th:href="@{'/owner-login'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>
         </div>
-        <div class="d-flex justify-content-center" style="height:45%">
+        <div class="d-flex justify-content-center" style="height:25%">
             <form th:action="@{results}" method="post" class="d-flex flex-column">
                 <div class="searchbar">
                     <input class="search_input" type="text" name="searchTerm" placeholder="Search Happy Hours Near You">
                     <button class="search_icon" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                </div>
+                </div><ul id="indexDay">
+                <li th:each="day:${dayOfWeek}" >
+                    <label th:text="${day}"></label>
+                    <input type="radio" name="dayOfWeek" th:value="${day}"  />
+                </li>
+            </ul>
+
             </form>
         </div>
         <div class="d-flex justify-content-center h-auto">
             <table class="table">
                 <thead>
                 <tr>
-                    <th> Hot Happy Hours</th>
+                    <th> New Happy Hours</th>
                 </tr>
                 </thead>
                 <tbody>
                 <th:block th:each="happy : ${happyHours}">
                     <tr>
                         <td>
-                            <a th:href="@{'/user-view/'+${happy.id}}" th:text="${happy}" class="btn btn-secondary " role="button" ></a>
+<!--                            <a th:href="@{'/user-view/'+${happy.id}}" th:text="${happy}" class="btn btn-secondary " role="button" ></a>-->
                         </td>
                     </tr>
                 </th:block>

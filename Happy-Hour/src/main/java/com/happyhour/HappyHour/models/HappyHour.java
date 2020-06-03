@@ -2,43 +2,37 @@ package com.happyhour.HappyHour.models;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Objects;
+import java.util.List;
 
 @Entity
 public class HappyHour extends AbstractEntity {
-
 
     @NotBlank
     @Size(min = 3, max = 65, message = "Name must be between 3 and 65 characters")
     private String name;
 
-    private String dayOfWeek;
+    @ManyToMany
+    private List<DayTime> dayTimes;
 
     @NotBlank
     @Size(max = 100, message = "Address too long")
     private String address;
 
-    private int startTime;
-    private int endTime;
 
     @ManyToOne
-    @NotNull(message = "Owner is required")
     private Owner owner;
 
-    public HappyHour(String name, String dayOfWeek, String address, int startTime, int endTime, Owner owner) {
+    public HappyHour(String name, String address, Owner owner, List<DayTime> dayTimes) {
         this.name = name;
-        this.dayOfWeek = dayOfWeek;
         this.address = address;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.dayTimes=dayTimes;
         this.owner = owner;
     }
 
     public HappyHour() {}
-
 
     public String getName() {
         return name;
@@ -48,13 +42,11 @@ public class HappyHour extends AbstractEntity {
         this.name = name;
     }
 
-    public String getDayOfWeek() {
-        return dayOfWeek;
+    public List<DayTime> getDayTimes() {
+        return dayTimes;
     }
 
-    public void setDayOfWeek(String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
-    }
+    public void setDayTimes(List<DayTime> dayTimes) { this.dayTimes = dayTimes; }
 
     public String getAddress() {
         return address;
@@ -64,20 +56,8 @@ public class HappyHour extends AbstractEntity {
         this.address = address;
     }
 
-    public int getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(int startTime) {
-        this.startTime = startTime;
-    }
-
-    public int getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(int endTime) {
-        this.endTime = endTime;
+    public String getStandardDayTime(){
+        return HourData.getStandardDayTime(dayTimes);
     }
 
     public Owner getOwner() {
@@ -90,12 +70,9 @@ public class HappyHour extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "{"   + name +
-                ", " + dayOfWeek +
+        return         name +
                 ", " + address +
-                ", " + startTime +
-                ", " + endTime +
-                '}';
-    }
+                ", " + getStandardDayTime();
 
+    }
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -21,7 +22,8 @@ public class HomeController {
     @RequestMapping("index")
     public String index(Model model) {
         model.addAttribute("title", "Home");
-        model.addAttribute("happyHours", happyHourRepository.findAll());
+        model.addAttribute("dayOfWeek", DayOfWeek.values());
+        model.addAttribute("happyHours", happyHourRepository.findTop5ByOrderByIdDesc());
         return "index";
     }
 
