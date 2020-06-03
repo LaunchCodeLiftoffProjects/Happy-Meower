@@ -14,6 +14,7 @@ public class Owner extends AbstractEntity {
     @NotBlank
     private String pwHash;
 
+
     public Owner(){}
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

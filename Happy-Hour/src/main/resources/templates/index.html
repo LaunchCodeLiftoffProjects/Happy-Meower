@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head th:replace="fragments :: head">
 </head>
@@ -12,6 +13,7 @@
             <a th:href="@{/owner-login}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>
         </div>
         <div sec:authorize="isAuthenticated()">
+            <span sec:authentication="name"></span>
             This content is only shown to authenticated users.
         </div>
         <div class="d-flex justify-content-center" style="height:25%">
@@ -39,7 +41,7 @@
                 <th:block th:each="happy : ${happyHours}">
                     <tr>
                         <td>
-<!--                            <a th:href="@{'/user-view/'+${happy.id}}" th:text="${happy}" class="btn btn-secondary " role="button" ></a>-->
+                            <a th:href="@{'/user-view/'+${happy.id}}" th:text="${happy}" class="btn btn-secondary " role="button" ></a>
                         </td>
                     </tr>
                 </th:block>

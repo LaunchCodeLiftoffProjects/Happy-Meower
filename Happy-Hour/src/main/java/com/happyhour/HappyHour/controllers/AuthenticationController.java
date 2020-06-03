@@ -79,7 +79,7 @@ public class AuthenticationController {
 
         Owner newOwner = new Owner(registerFormDTO.getUsername(), registerFormDTO.getPassword());
         ownerRepository.save(newOwner);
-        setOwnerInSession(request.getSession(), newOwner);
+//        setOwnerInSession(request.getSession(), newOwner);
 
         return "redirect:/owner-login";
     }
@@ -96,35 +96,35 @@ public class AuthenticationController {
                                    Errors errors, HttpServletRequest request,
                                    Model model) {
 
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Log In");
-            return "owner-login";
-        }
-
-        Owner theOwner = ownerRepository.findByUsername(loginFormDTO.getUsername());
-
-        if (theOwner == null) {
-            errors.rejectValue("username", "owner.invalid", "The given username does not exist");
-            model.addAttribute("title", "Log In");
-            return "owner-login";
-        }
-
-        String password = loginFormDTO.getPassword();
-
-        if (!theOwner.isMatchingPassword(password)) {
-            errors.rejectValue("password", "password.invalid", "Invalid password");
-            model.addAttribute("title", "Log In");
-            return "owner-login";
-        }
-
-        setOwnerInSession(request.getSession(), theOwner);
+//        if (errors.hasErrors()) {
+//            model.addAttribute("title", "Log In");
+//            return "owner-login";
+//        }
+//
+//        Owner theOwner = ownerRepository.findByUsername(loginFormDTO.getUsername());
+//
+//        if (theOwner == null) {
+//            errors.rejectValue("username", "owner.invalid", "The given username does not exist");
+//            model.addAttribute("title", "Log In");
+//            return "owner-login";
+//        }
+//
+//        String password = loginFormDTO.getPassword();
+//
+//        if (!theOwner.isMatchingPassword(password)) {
+//            errors.rejectValue("password", "password.invalid", "Invalid password");
+//            model.addAttribute("title", "Log In");
+//            return "owner-login";
+//        }
+//
+//        setOwnerInSession(request.getSession(), theOwner);
 
         return "redirect:/owner-home";
     }
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){
-        request.getSession().invalidate();
+//        request.getSession().invalidate();
         return "redirect:/owner-login";
     }
 }
