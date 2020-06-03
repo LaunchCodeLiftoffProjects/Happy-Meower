@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head th:replace="fragments :: head">
 </head>
@@ -9,26 +9,19 @@
 <div class="bg">
     <div class="container h-100" >
         <div class="d-flex justify-content-end p-2" >
+            <div sec:authorize="!isAuthenticated()">
+            <a th:href="@{'/owner-login'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>
+            </div>
 <!--            <a th:href="@{'/owner-login'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>-->
-            <a th:href="@{/owner-login}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>
         </div>
-        <div sec:authorize="isAuthenticated()">
-            <span sec:authentication="name"></span>
-            This content is only shown to authenticated users.
-        </div>
-        <div class="d-flex justify-content-center" style="height:25%">
-            <form th:action="@{results}" method="post" class="d-flex flex-column">
-                <div class="searchbar">
-                    <input class="search_input" type="text" name="searchTerm" placeholder="Search Happy Hours Near You">
-                    <button class="search_icon" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                </div><ul id="indexDay">
-                <li th:each="day:${dayOfWeek}" >
-                    <label th:text="${day}"></label>
-                    <input type="radio" name="dayOfWeek" th:value="${day}"  />
-                </li>
-            </ul>
 
-            </form>
+<!--        SAMPLE VERSION OF USE-->
+<!--        <div sec:authorize="isAuthenticated()">-->
+<!--            <span sec:authentication="name"></span>-->
+<!--            This content is only shown to authenticated users.-->
+<!--        </div>-->
+        <div class="d-flex justify-content-center" style="height:25%">
+            <div th:replace="fragments :: search"></div>
         </div>
         <div class="d-flex justify-content-center h-auto">
             <table class="table">
@@ -55,4 +48,3 @@
 </div>
 </body>
 </html>
-

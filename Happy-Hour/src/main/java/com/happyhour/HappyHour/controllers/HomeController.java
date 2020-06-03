@@ -19,7 +19,7 @@ public class HomeController {
     @Autowired
     HappyHourRepository happyHourRepository;
 
-    @RequestMapping("index")
+    @RequestMapping("")
     public String index(Model model) {
         model.addAttribute("title", "Home");
         model.addAttribute("dayOfWeek", DayOfWeek.values());

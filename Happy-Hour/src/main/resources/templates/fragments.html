@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 
 <div th:fragment="head">
@@ -21,11 +22,24 @@
 </div>
 
 <div th:fragment="navbar" class="navbar-header d-flex justify-content-flex-start text-center mb-4 w-100">
-    <a th:href="@{/index}" class="navbar-brand m-0 px-1 border">Home</a>
+    <a th:href="@{/}" class="navbar-brand m-0 px-1 border">Home</a>
     <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
-    <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
+    <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Logout</a>
 </div>
+<div th:fragment="search">
+    <form th:action="@{results}" method="post" class="d-flex flex-column">
+        <div class="searchbar">
+            <input class="search_input" type="text" name="searchTerm" placeholder="Search Happy Hours Near You">
+            <button class="search_icon" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+        </div><ul id="indexDay">
+        <li th:each="day:${dayOfWeek}" >
+            <label th:text="${day}"></label>
+            <input type="radio" name="dayOfWeek" th:value="${day}"  />
+        </li>
+    </ul>
 
+    </form>
+</div>
 
 <div th:fragment="map">
     <!--The div element for the map -->
