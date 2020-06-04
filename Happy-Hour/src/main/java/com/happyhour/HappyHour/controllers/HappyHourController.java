@@ -15,8 +15,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.security.Principal;
 import java.time.DayOfWeek;
 import java.util.*;
 
@@ -75,17 +74,17 @@ public class HappyHourController {
         return "results";
     }
 
-    @GetMapping("owner-home/{ownerId}")
-    public String displayCreateHappyHourFormAndTable(Model model, @PathVariable int ownerId) {
+    @GetMapping("owner-home")
+    public String displayCreateHappyHourFormAndTable(Model model, Principal principal) {
         SortedMap<Integer,String> displayTimes=new TreeMap<>();
         List<DayTime> tempDayTime=dayTimeRepository.findByDayOfWeek(DayOfWeek.SUNDAY);
         tempDayTime.forEach((dayTime)->displayTimes.put(dayTime.getTime(),HourData.getStandardTime(dayTime.getTime())));
 
-        Optional<Owner> result = ownerRepository.findById(ownerId);
-        if (result.isPresent()) {
-            Owner owner = result.get();
-            model.addAttribute("title", "You are signed in as " + owner.getUsername());
-            model.addAttribute("happyHours", owner.getHappyHours());
+        Owner result = ownerRepository.findByUsername(principal.getName());
+        if (result!=null) {
+            
+            model.addAttribute("title", "You are signed in as " + result.getUsername());
+            model.addAttribute("happyHours", result.getHappyHours());
         } else {
             model.addAttribute("title", "Owner Home");
         }
@@ -97,20 +96,20 @@ public class HappyHourController {
         return "owner-home";
     }
 
-    @PostMapping("owner-home/{ownerId}")
+    @PostMapping("owner-home")
     public String processCreateHappyHourForm(@ModelAttribute @Valid HappyHour newHappyHour, Errors errors, @ModelAttribute TimeFormDTO newTimeForm,
-                                         Model model, @PathVariable int ownerId) {
+                                             Model model, Principal principal) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Owner Home");
             return "owner-home";
         }
 
-        Optional<Owner> result = ownerRepository.findById(ownerId);
-        newHappyHour.setOwner(result.get());
+        Owner result = ownerRepository.findByUsername(principal.getName());
+        newHappyHour.setOwner(result);
 
         newHappyHour.setDayTimes(newTimeForm.getAllDayTimes(dayTimeRepository.findAll()));
         happyHourRepository.save(newHappyHour);
-        return "redirect:/owner-home/" + ownerId;
+        return "redirect:/owner-home/";
     }
 
 }

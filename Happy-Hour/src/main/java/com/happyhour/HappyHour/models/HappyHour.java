@@ -1,12 +1,10 @@
 package com.happyhour.HappyHour.models;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 @Entity
@@ -71,6 +69,7 @@ public class HappyHour extends AbstractEntity {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
 
     public Owner getOwner() {
         return owner;
