@@ -19,6 +19,7 @@
                     <th> Name </th>
                     <th> Address </th>
                     <th> Times </th>
+                    <th> Website </th>
                 </tr>
                 <tbody>
                 <th:block th:each="happy : ${happyHours}">
@@ -26,6 +27,7 @@
                         <td th:text="${happy.name}" ></td>
                         <td th:text="${happy.address}" ></td>
                         <td th:text="${happy.getStandardDayTime()}" ></td>
+                        <td th:href="@{${happy.website}}" th:text="${happy.website}"></td>
                     </tr>
                 </th:block>
                 </tbody>

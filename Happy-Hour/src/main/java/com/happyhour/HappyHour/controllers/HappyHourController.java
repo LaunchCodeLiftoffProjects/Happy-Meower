@@ -2,6 +2,7 @@ package com.happyhour.HappyHour.controllers;
 
 import com.happyhour.HappyHour.data.DayTimeRepository;
 import com.happyhour.HappyHour.data.HappyHourRepository;
+import com.happyhour.HappyHour.data.OwnerRepository;
 import com.happyhour.HappyHour.models.DayTime;
 import com.happyhour.HappyHour.models.HappyHour;
 import com.happyhour.HappyHour.models.HourData;
@@ -13,11 +14,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 
 @Controller
@@ -93,6 +93,7 @@ public class HappyHourController {
             model.addAttribute("title", "Owner Home");
             return "owner-home";
         }
+
         model.addAttribute("happyHours", happyHourRepository.findAll());
         newHappyHour.setDayTimes(newTimeForm.getAllDayTimes(dayTimeRepository.findAll()));
         happyHourRepository.save(newHappyHour);

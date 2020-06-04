@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 @Entity
@@ -20,11 +22,19 @@ public class HappyHour extends AbstractEntity {
     @Size(max = 100, message = "Address too long")
     private String address;
 
+    private String website;
 
-    public HappyHour(String name, String address, List<DayTime> dayTimes) {
+
+//    private static String website = getWebsite();
+//    final URL happyHourURL = new URL(website);
+
+
+
+    public HappyHour(String name, String address, List<DayTime> dayTimes, String website) {
         this.name = name;
         this.address = address;
-        this.dayTimes=dayTimes;
+        this.dayTimes= dayTimes;
+        this.website= website;
     }
 
     public HappyHour() { }
@@ -51,11 +61,20 @@ public class HappyHour extends AbstractEntity {
         return HourData.getStandardDayTime(dayTimes);
     }
 
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
     @Override
     public String toString() {
         return         name +
                 ", " + address +
-                ", " + getStandardDayTime();
+                ", " + getStandardDayTime() +
+                ", " + website;
 
     }
 }
