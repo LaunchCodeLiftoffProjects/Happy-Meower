@@ -1,6 +1,7 @@
 package com.happyhour.HappyHour.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -24,20 +25,18 @@ public class HappyHour extends AbstractEntity {
 
     private String website;
 
+    @ManyToOne
+    private Owner owner;
 
-//    private static String website = getWebsite();
-//    final URL happyHourURL = new URL(website);
-
-
-
-    public HappyHour(String name, String address, List<DayTime> dayTimes, String website) {
+    public HappyHour(String name, String address, Owner owner, List<DayTime> dayTimes, String website) {
         this.name = name;
         this.address = address;
-        this.dayTimes= dayTimes;
-        this.website= website;
+        this.dayTimes=dayTimes;
+        this.owner = owner;
+      this.website= website;
     }
 
-    public HappyHour() { }
+    public HappyHour() {}
 
     public String getName() {
         return name;
@@ -53,13 +52,18 @@ public class HappyHour extends AbstractEntity {
 
     public void setDayTimes(List<DayTime> dayTimes) { this.dayTimes = dayTimes; }
 
-    public String getAddress() { return address; }
+    public String getAddress() {
+        return address;
+    }
 
-    public void setAddress(String address) { this.address = address; }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getStandardDayTime(){
         return HourData.getStandardDayTime(dayTimes);
     }
+
 
     public String getWebsite() {
         return website;
@@ -67,6 +71,14 @@ public class HappyHour extends AbstractEntity {
 
     public void setWebsite(String website) {
         this.website = website;
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+
     }
 
     @Override
