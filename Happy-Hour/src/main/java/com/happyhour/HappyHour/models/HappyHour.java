@@ -1,9 +1,12 @@
 package com.happyhour.HappyHour.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 @Entity
@@ -20,14 +23,20 @@ public class HappyHour extends AbstractEntity {
     @Size(max = 100, message = "Address too long")
     private String address;
 
+    private String website;
 
-    public HappyHour(String name, String address, List<DayTime> dayTimes) {
+    @ManyToOne
+    private Owner owner;
+
+    public HappyHour(String name, String address, Owner owner, List<DayTime> dayTimes, String website) {
         this.name = name;
         this.address = address;
         this.dayTimes=dayTimes;
+        this.owner = owner;
+      this.website= website;
     }
 
-    public HappyHour() { }
+    public HappyHour() {}
 
     public String getName() {
         return name;
@@ -43,19 +52,41 @@ public class HappyHour extends AbstractEntity {
 
     public void setDayTimes(List<DayTime> dayTimes) { this.dayTimes = dayTimes; }
 
-    public String getAddress() { return address; }
+    public String getAddress() {
+        return address;
+    }
 
-    public void setAddress(String address) { this.address = address; }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getStandardDayTime(){
         return HourData.getStandardDayTime(dayTimes);
+    }
+
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+
     }
 
     @Override
     public String toString() {
         return         name +
                 ", " + address +
-                ", " + getStandardDayTime();
+                ", " + getStandardDayTime() +
+                ", " + website;
 
     }
 }

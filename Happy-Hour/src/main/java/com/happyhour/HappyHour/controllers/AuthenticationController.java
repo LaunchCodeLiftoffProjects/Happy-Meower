@@ -87,6 +87,7 @@ public class AuthenticationController {
 
         return "redirect:/owner-login";
     }
+
     @GetMapping("/owner-login")
     public String loginPage(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "logout", required = false) String logout,
@@ -110,49 +111,4 @@ public class AuthenticationController {
         }
         return "redirect:/owner-login?logout=true";
     }
-
-
-//    @GetMapping("/owner-login")
-//    public String displayLoginForm(Model model) {
-//        model.addAttribute(new LoginFormDTO());
-//        model.addAttribute("title", "Log In");
-//        return "owner-login";
-//    }
-//
-//    @PostMapping("/owner-login")
-//    public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
-//                                   Errors errors, HttpServletRequest request,
-//                                   Model model) {
-//
-////        if (errors.hasErrors()) {
-////            model.addAttribute("title", "Log In");
-////            return "owner-login";
-////        }
-////
-////        Owner theOwner = ownerRepository.findByUsername(loginFormDTO.getUsername());
-////
-////        if (theOwner == null) {
-////            errors.rejectValue("username", "owner.invalid", "The given username does not exist");
-////            model.addAttribute("title", "Log In");
-////            return "owner-login";
-////        }
-////
-////        String password = loginFormDTO.getPassword();
-////
-////        if (!theOwner.isMatchingPassword(password)) {
-////            errors.rejectValue("password", "password.invalid", "Invalid password");
-////            model.addAttribute("title", "Log In");
-////            return "owner-login";
-////        }
-////
-////        setOwnerInSession(request.getSession(), theOwner);
-//
-//        return "redirect:/owner-home";
-//    }
-//
-//    @GetMapping("/logout")
-//    public String logout(HttpServletRequest request){
-////        request.getSession().invalidate();
-//        return "redirect:/owner-login";
-//    }
 }

@@ -8,9 +8,9 @@
 
         <div th:replace="fragments :: navbar"></div>
 
-<!--        <div class="d-flex justify-content-end p-2" >-->
-<!--&lt;!&ndash;    <a th:href="@{'/logout'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Logout</a>&ndash;&gt;-->
-<!--</div>-->
+        <div class="d-flex justify-content-end p-2" >
+    <a th:href="@{'/logout'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Logout</a>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-xs-6">
@@ -51,6 +51,12 @@
 
                     </th:block>
 
+                    <div class="form-group">
+                        <label>Happy Hour Website
+                            <input th:field="${happyHour.website}" class="form-control" th:href="@{${happyHour.website}}" placeholder="http://">
+                        </label>
+                        <p class="error" th:errors="${happyHour.website}"></p>
+                    </div>
 
                 </div>
                 <div class="col text-center">
@@ -64,20 +70,25 @@
                 <tr>
                     <th scope="col">Business</th>
                     <th scope="col">Days of Week</th>
-                    <th scope="col">Time</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col">End Time</th>
+                    <th scope="col">Address</th>
                 </tr>
                 </thead>
                 <tbody>
                                     <tr th:each="happyHour : ${happyHours}">
-                                        <td th:text="${happyHour.name}"></td>
-                                        <td th:text="${happyHour.address}"></td>
+                                        <td th:text="${happyHour.name}">
                                         <td th:text="${happyHour.getStandardDayTime()}"></td>
+                                        <td th:text="${happyHour.address}"></td>
+                                        <td>
+                                        <a th:href="${happyHour.website}" th:text="${happyHour.website}" target="_blank"></a>
+                                    </td>
                                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-</div>
+</div></div>
 
 </body>
 </html>

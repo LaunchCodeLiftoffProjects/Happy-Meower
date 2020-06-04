@@ -3,6 +3,7 @@ package com.happyhour.HappyHour.models;
 import com.happyhour.HappyHour.data.DayTimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
