@@ -9,8 +9,10 @@
 <div class="bg">
     <div class="container h-100" >
         <div class="d-flex justify-content-end p-2" >
-            <div sec:authorize="!isAuthenticated()">
-            <a th:href="@{'/owner-login'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>
+            <div>
+                <a class="nav-link" th:href="@{/owner-login}" sec:authorize="!isAuthenticated()">Log In</a>
+                <form th:action="@{/logout}" method="post" name="logoutForm"></form>
+                <a class="nav-link" href="#" sec:authorize="isAuthenticated()"  onclick="document.logoutForm.submit()">Log Out</a>
             </div>
 <!--            <a th:href="@{'/owner-login'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>-->
         </div>
