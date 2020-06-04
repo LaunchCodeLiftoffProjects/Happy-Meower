@@ -25,8 +25,8 @@
     <a th:href="@{/}" class="navbar-brand m-0 px-1 border">Home</a>
     <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
     <a class="nav-link" th:href="@{/owner-login}" sec:authorize="!isAuthenticated()">Log In</a>
-    <form th:action="@{/logout}" method="post" name="logoutForm"></form>
-    <a class="nav-link" href="#" sec:authorize="isAuthenticated()"  onclick="document.logoutForm.submit()">Log Out</a>
+<!--    <form th:action= method="post" name="logoutForm"></form>-->
+    <a class="nav-link" th:href="@{/logout}" sec:authorize="isAuthenticated()" >Log Out</a>
 </div>
 <div th:fragment="search">
     <form th:action="@{results}" method="post" class="d-flex flex-column">
