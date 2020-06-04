@@ -50,6 +50,13 @@
                         </div>
 
                     </th:block>
+                  
+                    <div class="form-group">
+                        <label>Happy Hour Website
+                            <input th:field="${happyHour.website}" class="form-control" th:href="@{${happyHour.website}}" placeholder="http://">
+                        </label>
+                        <p class="error" th:errors="${happyHour.website}"></p>
+                    </div>
 
                 </div>
                 <div class="col text-center">
@@ -62,16 +69,20 @@
                 <thead>
                 <tr>
                     <th scope="col">Business</th>
+                    <th scope="col">Times</th>
                     <th scope="col">Address</th>
-                    <th scope="col">Days of Week</th>
+                    <th scope="col">Website</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="happyHour : ${happyHours}">
-                        <td th:text="${happyHour.name}"></td>
-                        <td th:text="${happyHour.address}"></td>
-                        <td th:text="${happyHour.getStandardDayTime()}"></td>
-                    </tr>
+                                    <tr th:each="happyHour : ${happyHours}">
+                                        <td th:text="${happyHour.name}"></td>
+                                        <td th:text="${happyHour.getStandardDayTime()}"></td>
+                                        <td th:text="${happyHour.address}"></td>
+                                        <td>
+                                        <a th:href="${happyHour.website}" th:text="${happyHour.website}" target="_blank"></a>
+                                    </td>
+                                    </tr>
                 </tbody>
             </table>
         </div>

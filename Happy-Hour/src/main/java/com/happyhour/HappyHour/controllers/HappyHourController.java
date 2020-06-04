@@ -15,12 +15,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 
 @Controller
@@ -106,8 +104,10 @@ public class HappyHourController {
             model.addAttribute("title", "Owner Home");
             return "owner-home";
         }
+
         Optional<Owner> result = ownerRepository.findById(ownerId);
         newHappyHour.setOwner(result.get());
+
         newHappyHour.setDayTimes(newTimeForm.getAllDayTimes(dayTimeRepository.findAll()));
         happyHourRepository.save(newHappyHour);
         return "redirect:/owner-home/" + ownerId;
