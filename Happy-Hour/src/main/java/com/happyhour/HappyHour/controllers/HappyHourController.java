@@ -2,9 +2,11 @@ package com.happyhour.HappyHour.controllers;
 
 import com.happyhour.HappyHour.data.DayTimeRepository;
 import com.happyhour.HappyHour.data.HappyHourRepository;
+import com.happyhour.HappyHour.data.OwnerRepository;
 import com.happyhour.HappyHour.models.DayTime;
 import com.happyhour.HappyHour.models.HappyHour;
 import com.happyhour.HappyHour.models.HourData;
+import com.happyhour.HappyHour.models.Owner;
 import com.happyhour.HappyHour.models.dto.TimeFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -26,6 +29,9 @@ public class HappyHourController {
 
     @Autowired
     private HappyHourRepository happyHourRepository;
+
+    @Autowired
+    private OwnerRepository ownerRepository;
 
     @Autowired
     private DayTimeRepository dayTimeRepository;
@@ -71,14 +77,21 @@ public class HappyHourController {
         return "results";
     }
 
-    @GetMapping("owner-home")
-    public String displayCreateHappyHourFormAndTable(Model model) {
+    @GetMapping("owner-home/{ownerId}")
+    public String displayCreateHappyHourFormAndTable(Model model, @PathVariable int ownerId) {
         SortedMap<Integer,String> displayTimes=new TreeMap<>();
         List<DayTime> tempDayTime=dayTimeRepository.findByDayOfWeek(DayOfWeek.SUNDAY);
         tempDayTime.forEach((dayTime)->displayTimes.put(dayTime.getTime(),HourData.getStandardTime(dayTime.getTime())));
 
-        model.addAttribute("title", "Owner Home");
-        model.addAttribute("happyHours", happyHourRepository.findAll());
+        Optional<Owner> result = ownerRepository.findById(ownerId);
+        if (result.isPresent()) {
+            Owner owner = result.get();
+            model.addAttribute("title", "You are signed in as " + owner.getUsername());
+            model.addAttribute("happyHours", owner.getHappyHours());
+        } else {
+            model.addAttribute("title", "Owner Home");
+        }
+
         model.addAttribute(new TimeFormDTO());
         model.addAttribute("dayOfWeek", DayOfWeek.values());
         model.addAttribute("displayTimes",displayTimes);
@@ -86,17 +99,18 @@ public class HappyHourController {
         return "owner-home";
     }
 
-    @PostMapping("owner-home")
-    public String processCreateHappyHourForm(@ModelAttribute @Valid HappyHour newHappyHour, @ModelAttribute @Valid TimeFormDTO newTimeForm,
-                                         Errors errors, Model model) {
+    @PostMapping("owner-home/{ownerId}")
+    public String processCreateHappyHourForm(@ModelAttribute @Valid HappyHour newHappyHour, Errors errors, @ModelAttribute TimeFormDTO newTimeForm,
+                                         Model model, @PathVariable int ownerId) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Owner Home");
             return "owner-home";
         }
-        model.addAttribute("happyHours", happyHourRepository.findAll());
+        Optional<Owner> result = ownerRepository.findById(ownerId);
+        newHappyHour.setOwner(result.get());
         newHappyHour.setDayTimes(newTimeForm.getAllDayTimes(dayTimeRepository.findAll()));
         happyHourRepository.save(newHappyHour);
-        return "redirect:owner-home";
+        return "redirect:/owner-home/" + ownerId;
     }
 
 }

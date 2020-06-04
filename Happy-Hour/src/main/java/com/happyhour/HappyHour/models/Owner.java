@@ -3,8 +3,12 @@ package com.happyhour.HappyHour.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Owner extends AbstractEntity {
@@ -14,6 +18,10 @@ public class Owner extends AbstractEntity {
 
     @NotBlank
     private String pwHash;
+
+    @OneToMany
+    @JoinColumn(name="owner_id")
+    private final List<HappyHour> happyHours = new ArrayList<>();
 
     public Owner(){}
 
@@ -26,6 +34,10 @@ public class Owner extends AbstractEntity {
 
     public String getUsername() {
         return username;
+    }
+
+    public List<HappyHour> getHappyHours() {
+        return happyHours;
     }
 
     public boolean isMatchingPassword(String password) {

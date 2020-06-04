@@ -1,6 +1,7 @@
 package com.happyhour.HappyHour.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -21,13 +22,17 @@ public class HappyHour extends AbstractEntity {
     private String address;
 
 
-    public HappyHour(String name, String address, List<DayTime> dayTimes) {
+    @ManyToOne
+    private Owner owner;
+
+    public HappyHour(String name, String address, Owner owner, List<DayTime> dayTimes) {
         this.name = name;
         this.address = address;
         this.dayTimes=dayTimes;
+        this.owner = owner;
     }
 
-    public HappyHour() { }
+    public HappyHour() {}
 
     public String getName() {
         return name;
@@ -43,12 +48,24 @@ public class HappyHour extends AbstractEntity {
 
     public void setDayTimes(List<DayTime> dayTimes) { this.dayTimes = dayTimes; }
 
-    public String getAddress() { return address; }
+    public String getAddress() {
+        return address;
+    }
 
-    public void setAddress(String address) { this.address = address; }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getStandardDayTime(){
         return HourData.getStandardDayTime(dayTimes);
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     @Override
