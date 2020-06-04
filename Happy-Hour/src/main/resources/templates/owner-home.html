@@ -68,7 +68,7 @@
                 <thead>
                 <tr>
                     <th scope="col">Business</th>
-                    <th scope="col">When</th>
+                    <th scope="col">Times</th>
                     <th scope="col">Address</th>
                     <th scope="col">Website</th>
                 </tr>
@@ -78,7 +78,9 @@
                                         <td th:text="${happyHour.name}"></td>
                                         <td th:text="${happyHour.getStandardDayTime()}"></td>
                                         <td th:text="${happyHour.address}"></td>
-                                        <td th:text="${happyHour.website}"></td>
+                                        <<td>
+                                        <a th:href="${happy.website}" th:text="${happy.website}" target="_blank"></a>
+                                    </td>
                                     </tr>
                 </tbody>
             </table>

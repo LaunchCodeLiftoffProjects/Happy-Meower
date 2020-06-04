@@ -27,7 +27,9 @@
                         <td th:text="${happy.name}" ></td>
                         <td th:text="${happy.address}" ></td>
                         <td th:text="${happy.getStandardDayTime()}" ></td>
-                        <td th:href="@{${happy.website}}" th:text="${happy.website}"></td>
+                        <td>
+                         <a th:href="${happy.website}" th:text="${happy.website}" target="_blank"></a>
+                        </td>
                     </tr>
                 </th:block>
                 </tbody>
