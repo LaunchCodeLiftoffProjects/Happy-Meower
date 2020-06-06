@@ -4,30 +4,10 @@
 
 <title th:text="${title}"></title>
 
-<body class="container body_text">
-    <div class="bg">
+<body>
+<div th:replace="fragments :: navbar"></div>
 
-        <div th:replace="fragments :: header"></div>
-
-        <div th:replace="fragments :: navbar"></div>
-
-        <div class="row d-flex justify-content-center">
-<!--            <form method="post">-->
-<!--                <div class="form-group">-->
-<!--                    <label>Username-->
-<!--                        <input class="form-control" th:field="${loginFormDTO.username}">-->
-<!--                    </label>-->
-<!--                    <p class="error" th:errors="${loginFormDTO.username}"></p>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label>Password-->
-<!--                        <input class="form-control" th:field="${loginFormDTO.password}" type="password">-->
-<!--                    </label>-->
-<!--                    <p class="error" th:errors="${loginFormDTO.password}"></p>-->
-<!--                </div>-->
-
-<!--                <input type="submit" class="btn btn-primary" value="Log In" />-->
-<!--            </form>-->
+        <div>
             <h3>Enter user name and password:</h3>
             <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
                 <table>
@@ -50,6 +30,5 @@
             </form>
         </div>
         <p class="row d-flex justify-content-center my-2">Don't have an account?<a href="/owner-registration">Register for one.</a></p>
-    </div>
 </body>
 </html>

@@ -13,6 +13,8 @@
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
     <link th:href="@{/css/happyhour.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet"/>
+        <link href='https://fonts.googleapis.com/css?family=Alatsi' rel='stylesheet'/>
 
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script></head>
 </div>
@@ -21,13 +23,20 @@
     <h1>Happy Hour Locator</h1>
 </div>
 
-<div th:fragment="navbar" class="navbar-header d-flex justify-content-flex-start text-center mb-4 w-100">
-    <a th:href="@{/}" class="navbar-brand m-0 px-1 border">Home</a>
-    <p th:text="${title}" class="navbar-brand m-0 w-100 border"></p>
-    <a class="nav-link" th:href="@{/owner-login}" sec:authorize="!isAuthenticated()">Log In</a>
-<!--    <form th:action= method="post" name="logoutForm"></form>-->
-    <a class="nav-link" th:href="@{/logout}" sec:authorize="isAuthenticated()" >Log Out</a>
+<div th:fragment="navbar" id="navbar">
+    <div id="logo">
+        Happy Meower
+    </div>
+    <div id="nav">
+        <ul>
+            <li><a th:href="@{/}">Search Home</a></li>
+            <li><a th:href="@{/owner-home}">Owner Home</a></li>
+            <li><a th:href="@{/owner-login}" sec:authorize="!isAuthenticated()">Log In</a>
+                <a th:href="@{/logout}" sec:authorize="isAuthenticated()" >Log Out</a></li>
+        </ul>
+    </div>
 </div>
+
 <div th:fragment="search">
     <form th:action="@{results}" method="post" class="d-flex flex-column">
         <div class="searchbar">
