@@ -1,5 +1,5 @@
 
-.bg{
+.index-background{
     background-color: #34cfeb;
      background-image: url("/img/HappyHourBG.png");
      background-position: center;
@@ -8,9 +8,7 @@
      padding-top: 56px;
 }
 
-.navbar-bump {
-    padding-top: 100px;
-}
+
 
 li {
     list-style: none;

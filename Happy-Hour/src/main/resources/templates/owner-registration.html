@@ -4,16 +4,13 @@
 </head>
 <title th:text="${title}"></title>
 
-<body id="index-background">
+<body class="index-background">
 
     <div th:replace="fragments :: navbar"></div>
 
-    <div th:replace="fragments :: navbar-bump"></div>
+    <div th:replace="fragments :: header"></div>
 
-    <div class="bg">
-        <div th:replace="fragments :: header"></div>
-
-        <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center">
             <form method="post">
                 <div class="form-group">
                     <label>Username
@@ -35,9 +32,9 @@
 
                 <input type="Submit" class="btn btn-primary" value="Register"/>
             </form>
-        </div>
-
     </div>
+
+
 </body>
 
 </html>
