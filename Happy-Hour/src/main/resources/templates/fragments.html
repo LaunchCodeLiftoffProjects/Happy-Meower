@@ -15,6 +15,12 @@
         <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'/>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet"/>
+        <link href='https://fonts.googleapis.com/css?family=Alatsi' rel='stylesheet'/>
+        <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'/>
+        <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'/>
+        <link href='https://fonts.googleapis.com/css?family=Lilita One' rel='stylesheet'/>
 
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script></head>
 </div>
@@ -23,23 +29,20 @@
     <h1>Happy Hour Locator</h1>
 </div>
 
-<div th:fragment="navbar" >
-    <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-between">
-
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a th:href="@{/}" class="nav-link">Home</a>
-            </li>
+<div th:fragment="navbar" id="navbar">
+    <div id="logo">
+        Happy Meower
+    </div>
+    <div id="nav">
+        <ul>
+            <li><a th:href="@{/}">Search Home</a></li>
+            <li><a th:href="@{/owner-home}">Owner Home</a></li>
+            <li><a th:href="@{/owner-login}" sec:authorize="!isAuthenticated()">Log In</a>
+                <a th:href="@{/logout}" sec:authorize="isAuthenticated()" >Log Out</a></li>
         </ul>
-        <a class="navbar-brand">Happy Meower</a>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/owner-login}" sec:authorize="!isAuthenticated()">Log In</a>
-                <a class="nav-link" th:href="@{/logout}" sec:authorize="isAuthenticated()" >Log Out</a>
-            </li>
-        </ul>
-    </nav>
+    </div>
 </div>
+
 <div th:fragment="search">
     <form th:action="@{results}" method="post" class="d-flex flex-column">
         <div class="searchbar">
