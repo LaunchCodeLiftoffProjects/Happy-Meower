@@ -4,11 +4,14 @@
 </head>
 <title th:text="${title}"></title>
 
-<body class="container body_text">
+<body id="index-background">
+
+    <div th:replace="fragments :: navbar"></div>
+
+    <div th:replace="fragments :: navbar-bump"></div>
+
     <div class="bg">
         <div th:replace="fragments :: header"></div>
-
-        <div th:replace="fragments :: navbar"></div>
 
         <div class="row d-flex justify-content-center">
             <form method="post">

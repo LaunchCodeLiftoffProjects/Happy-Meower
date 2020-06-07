@@ -4,8 +4,11 @@
 
 <title th:text="${title}"></title>
 
-<body>
-<div th:replace="fragments :: navbar"></div>
+<body id="index-background">
+
+    <div th:replace="fragments :: navbar"></div>
+
+    <div th:replace="fragments :: navbar-bump"></div>
 
         <div>
             <h3>Enter user name and password:</h3>

@@ -3,11 +3,14 @@
 <head th:replace="fragments :: head">
 </head>
 <title th:text="${title}"></title>
-<body class="container body_text">
+<body id="index-background">
+
+<div th:replace="fragments :: navbar"></div>
+
+<div th:replace="fragments :: navbar-bump"></div>
+
     <div class="bg">
         <div th:replace="fragments :: header"></div>
-
-        <div th:replace="fragments :: navbar"></div>
 
         <div class="d-flex w-100">
             <h2 th:text="'Happy Hours with '+${searchTerm}"></h2>

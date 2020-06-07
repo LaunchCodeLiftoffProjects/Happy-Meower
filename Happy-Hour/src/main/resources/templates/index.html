@@ -7,18 +7,13 @@
 <title th:text="${title}"></title>
 
 <body id="index-background">
-<div th:replace="fragments :: navbar"></div>
-<div>
-    <div>
 
-<!--        SAMPLE VERSION OF USE-->
-<!--        <div sec:authorize="isAuthenticated()">-->
-<!--            <span sec:authentication="name"></span>-->
-<!--            This content is only shown to authenticated users.-->
-<!--        </div>-->
-        <div>
-            <div th:replace="fragments :: search"></div>
-        </div>
+    <div th:replace="fragments :: navbar"></div>
+
+    <div th:replace="fragments :: navbar-bump"></div>
+
+    <div th:replace="fragments :: search"></div>
+
         <div>
             <table>
                 <thead>
@@ -40,7 +35,5 @@
         <div class="d-flex justify-content-center">
             <a th:href="@{'/owner-registration'}" th:text="'Want to add your Happy Hour?'" class="btn btn-primary " role="button"></a>
         </div>
-    </div>
-</div>
 </body>
 </html>

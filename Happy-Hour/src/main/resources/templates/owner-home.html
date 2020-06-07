@@ -4,12 +4,13 @@
 
 <title th:text="${title}"></title>
 
-<body class="container bg">
+<body id="index-background">
 
-        <div th:replace="fragments :: navbar"></div>
+    <div th:replace="fragments :: navbar"></div>
+
+    <div th:replace="fragments :: navbar-bump"></div>
 
         <div class="d-flex justify-content-end p-2" >
-    <a th:href="@{'/logout'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Logout</a>
 </div>
 <div class="container">
     <div class="row">

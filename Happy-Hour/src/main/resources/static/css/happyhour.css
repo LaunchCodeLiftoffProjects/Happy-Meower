@@ -19,6 +19,10 @@ body {
     padding-top: 20px;
 }
 
+.navbar-bump {
+    padding-top: 100px;
+}
+
 li {
     list-style: none;
     display: inline-block;

@@ -3,8 +3,12 @@
 <head th:replace="fragments :: head">
 </head>
 <title th:text="${title}"></title>
-<body>
+<body id="index-background">
+
 <div th:replace="fragments :: navbar"></div>
+
+<div th:replace="fragments :: navbar-bump"></div>
+
 <div>
     <div class="container">
         <div class="d-flex justify-content-center h-auto pb-5">
