@@ -15,6 +15,7 @@
 
 <div class="d-flex p-5">
     <div class="container bg-light">
+
         <table class="table">
             <tr>
                 <th> Name </th>
@@ -23,8 +24,12 @@
                 <th> Website </th>
             </tr>
             <tbody>
+            <tr class="error" th:if="${none}">
+                <td th:text="${none}"></td>
+            </tr>
             <th:block th:each="happy : ${happyHours}">
                 <tr>
+
                     <td th:text="${happy.name}" ></td>
                     <td th:text="${happy.address}" ></td>
                     <td th:text="${happy.getStandardDayTime()}" ></td>

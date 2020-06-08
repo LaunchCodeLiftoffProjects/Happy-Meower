@@ -41,36 +41,28 @@ public class HappyHourController {
     }
 
     @PostMapping("results")
-    public String searchHH(Model model, @RequestParam String searchTerm, @RequestParam(required=false) DayOfWeek dayOfWeek){
-
+    public String searchHH(Model model, @RequestParam String searchTerm,  @RequestParam(required=false) DayOfWeek dayOfWeek){
         model.addAttribute("title", "Search Results");
-        ArrayList<HappyHour> searchResults = HourData.searchHappyHour(searchTerm, happyHourRepository.findAll());
+        ArrayList<HappyHour> searchResults;
         ArrayList<String> resultAddresses = new ArrayList<>();
-
+        List<HappyHour> tempHappyHour=new ArrayList<>();
+        if(dayOfWeek!=null) {
+            Set<HappyHour> tempDayTime= new LinkedHashSet<>();
+            dayTimeRepository.findByDayOfWeek(dayOfWeek).forEach(dayTime -> tempDayTime.addAll(dayTime.getHappyHours()));
+            tempHappyHour.addAll(tempDayTime);
+            searchResults=HourData.searchHappyHour(searchTerm,tempHappyHour);
+            model.addAttribute("dayOfWeek",dayOfWeek.getDisplayName(TextStyle.FULL,Locale.getDefault()));
+        }else{
+            searchResults=HourData.searchHappyHour(searchTerm,happyHourRepository.findAll());
+        }
         for (HappyHour result : searchResults) {
             resultAddresses.add(result.getAddress());
         }
+        if(searchResults.size()==0){
+            model.addAttribute("none", "No results found");
+        }
         model.addAttribute("searchTerm",searchTerm);
-        model.addAttribute("dayOfWeek",dayOfWeek.getDisplayName(TextStyle.FULL,Locale.getDefault()));
-        //Will need optimization.
-        if(searchTerm.equals("")){
-            List<HappyHour> tempHappyHour=new ArrayList<>();
-            List<DayTime> tempDayTime=dayTimeRepository.findByDayOfWeek(dayOfWeek);
-            for (DayTime dayTime : tempDayTime) {
-                if(!dayTime.getHappyHours().isEmpty()) {
-                    List<HappyHour> a = dayTime.getHappyHours();
-                    a.removeAll(tempHappyHour);
-                    tempHappyHour.addAll(a);
-                }
-            }
-            model.addAttribute("happyHours",tempHappyHour);
-        }
-        if(dayOfWeek==null){
-            model.addAttribute("happyHours",HourData.searchHappyHour(searchTerm, happyHourRepository.findAll()));
-        }
-        if(dayOfWeek==null&& searchTerm.equals("")){
-            return "redirect:";
-        }
+        model.addAttribute("happyHours",searchResults);
         model.addAttribute("addressList",resultAddresses);
         return "results";
     }

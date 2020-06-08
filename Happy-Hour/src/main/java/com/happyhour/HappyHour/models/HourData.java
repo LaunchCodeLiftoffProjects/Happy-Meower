@@ -3,7 +3,6 @@ package com.happyhour.HappyHour.models;
 import com.happyhour.HappyHour.data.DayTimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +37,7 @@ public class HourData {
         if(dayTimes.isEmpty()){
             return "no times added";
         }
-        StringBuilder temp= new StringBuilder(dayTimes.get(0).getDayOfWeek().toString() + ":" + HourData.getStandardTime(dayTimes.get(0).getTime()));//stores the first entry
+        String temp= dayTimes.get(0).getDayOfWeek().toString() + ": " + HourData.getStandardTime(dayTimes.get(0).getTime());//stores the first entry
         int counter=0; //stores the index of the last entry in a block
 
         /*
@@ -47,14 +46,14 @@ public class HourData {
          */
         for(int i=1;i<dayTimes.size();i++){
             if(dayTimes.get(i).getId()!=dayTimes.get(i-1).getId()+1) { //checks to see if current id is not the next entry(monday @ 0000=1 monday @ 0300=4)
-                temp.append(" - ").append(HourData.getStandardTime(dayTimes.get(counter).getTime() + 100)).append("|");//add the time for the last block
-                temp.append(dayTimes.get(i).getDayOfWeek().toString()).append(":").append(HourData.getStandardTime(dayTimes.get(i).getTime()));//starts the new block
+                temp+=" - "+HourData.getStandardTime(dayTimes.get(counter).getTime() + 100)+"|";//add the time for the last block
+                temp+=dayTimes.get(i).getDayOfWeek().toString()+": "+HourData.getStandardTime(dayTimes.get(i).getTime());//starts the new block
             }else {
                 counter = i;        //stores the last index of a continuous block
             }
         }
-        temp.append(" - ").append(HourData.getStandardTime(dayTimes.get(dayTimes.size() - 1).getTime() + 100));//add the final time
-        return temp.toString();
+        temp+=" - "+HourData.getStandardTime(dayTimes.get(dayTimes.size() - 1).getTime() + 100);//add the final time
+        return temp;
     }
 
     /**

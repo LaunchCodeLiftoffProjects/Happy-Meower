@@ -39,9 +39,11 @@
     <form th:action="@{results}" method="post" class="d-flex flex-column align-items-center" >
         <div class="searchbar">
             <input class="search_input" type="text" name="searchTerm" placeholder="Search Happy Hours Near You">
+
             <button class="search_icon" type="submit"><i class="glyphicon glyphicon-search"></i></button>
         </div>
-        <ul id="indexDay">
+
+        <ul class="p-3" id="indexDay">
         <li th:each="day:${dayOfWeek}" >
             <label th:text="${day}"></label>
             <input type="radio" name="dayOfWeek" th:value="${day}"  />

@@ -11,24 +11,22 @@
         <nav th:replace="fragments :: navbar"></nav>
 
         <div class="d-flex flex-column vh-100">
-            <div class="d-flex flex-column-reverse h-50 p-3">
+            <div class="d-flex flex-column-reverse h-50 p-6">
                 <div th:replace="fragments :: search"></div>
             </div>
-            <div class="container-fluid h-25">
-            <h4 class="p-3"> New Happy Hours</h4>
+            <div class="container-fluid h-auto">
+            <h4 class="w-25 rounded shadow bg-light mx-auto p-3"> New Happy Hours</h4>
             <div class="d-flex justify-content-around">
                     <th:block th:each="happy : ${happyHours}">
-
-                                <a class="card shadow" th:href="@{'/user-view/'+${happy.id}}" role="button" style="height:150px; width: 200px;">
-                                    <img src="/img/new-background.jpg" class="card-img" alt=# style="height:150px">
-                                    <div class="card-img-overlay">
+                                <a class="card shadow" th:href="@{'/user-view/'+${happy.id}}" role="button" style="height:100px; width: 100px;">
+                                    <img src="/img/new-background.jpg" class="card-img" alt=# style="height:100px">
+                                    <div class="card-img-top">
                                         <h4 th:text="${happy.name}"></h4>
                                     </div>
                                 </a>
                     </th:block>
-
             </div>
-                <div class="d-flex justify-content-center p-3">
+                <div class="d-flex justify-content-center p-5">
                     <a th:href="@{'/owner-registration'}" th:text="'Want to add your Happy Hour?'" class="btn btn-primary " role="button"></a>
                 </div>
         </div>
