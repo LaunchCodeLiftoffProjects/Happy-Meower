@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
-</head>
-<title th:text="${title}"></title>
+    <title th:text="${title}"></title>
 <body class="index-background">
 
 <div th:replace="fragments :: navbar"></div>
 
-    <div class="bg">
-        <div th:replace="fragments :: header"></div>
+<div class="d-flex p-3">
+    <h2>Happy Hours&nbsp;</h2>
+    <h2 th:if="${searchTerm!=''}"  th:text="' with '+${searchTerm}+'&nbsp;'"></h2>
+    <h2 th:if="${dayOfWeek}" th:text="' on '+${dayOfWeek}"></h2>
 
-        <div class="d-flex w-100">
-            <h2 th:text="'Happy Hours with '+${searchTerm}"></h2>
-        </div>
+</div>
 
-        <div class="h-auto pb-5">
-            <table class="table">
+<div class="d-flex p-5">
+    <div class="container bg-light">
+        <table class="table">
+            <tr>
+                <th> Name </th>
+                <th> Address </th>
+                <th> Times </th>
+                <th> Website </th>
+            </tr>
+            <tbody>
+            <th:block th:each="happy : ${happyHours}">
                 <tr>
-                    <th> Name </th>
-                    <th> Address </th>
-                    <th> Times </th>
-                    <th> Website </th>
+                    <td th:text="${happy.name}" ></td>
+                    <td th:text="${happy.address}" ></td>
+                    <td th:text="${happy.getStandardDayTime()}" ></td>
+                    <td>
+                        <a th:href="${happy.website}" th:text="${happy.website}" target="_blank"></a>
+                    </td>
                 </tr>
-                <tbody>
-                <th:block th:each="happy : ${happyHours}">
-                    <tr>
-                        <td th:text="${happy.name}" ></td>
-                        <td th:text="${happy.address}" ></td>
-                        <td th:text="${happy.getStandardDayTime()}" ></td>
-                        <td>
-                         <a th:href="${happy.website}" th:text="${happy.website}" target="_blank"></a>
-                        </td>
-                    </tr>
-                </th:block>
-                </tbody>
-            </table>
-        </div>
-
-        <div th:replace="fragments :: map"></div>
+            </th:block>
+            </tbody>
+        </table>
     </div>
+    <div th:replace="fragments :: map"></div>
+</div>
 </body>
 </html>

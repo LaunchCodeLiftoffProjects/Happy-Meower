@@ -1,15 +1,18 @@
-
 .index-background{
-    background-color: #34cfeb;
-     background-image: url("/img/HappyHourBG.png");
-     background-position: center;
+    background-color: #6699cc;
+     background-image: url("/img/background.png");
+     background-position: center center;
      background-repeat: no-repeat;
-     background-size: auto 100%;
+    background-size:cover;
+     background-position:center center;
+     background-attachment: fixed;
      padding-top: 56px;
+     font-family:Acme,Verdana, sans-serif;
 }
 
-
-
+.p-6{
+    padding: 9rem!important;
+}
 li {
     list-style: none;
     display: inline-block;
@@ -25,7 +28,12 @@ li a {
 li a:hover {
     color: #33ccff;
 }
-
+h4{
+text-decoration: none!important;
+    font-size: 18px;
+    color:  #000000;
+    text-align: center
+    }
 .navbar-brand {
     font-family: Aclonica;
     font-size: 35px;
@@ -37,6 +45,7 @@ li a:hover {
     background-color: #FFFFFF;
     border-radius: 30px;
     padding: 10px;
+    width: 520px;
 }
 
 .search_input{
@@ -48,7 +57,7 @@ li a:hover {
     padding: 0 10px;
     caret-color:transparent;
     line-height: 40px;
-    transition: width 0.4s linear;
+
 }
 
 .search_icon{
@@ -62,3 +71,54 @@ li a:hover {
     color: #e74c3c;
     text-decoration:none;
 }
+.hideawayMONDAY{
+
+display:none;
+}
+#MONDAY:checked ~ .hideawayMONDAY{
+color:black;
+  display:block;
+}
+.hideawayTUESDAY{
+display:none;
+}
+#TUESDAY:checked ~ .hideawayTUESDAY{
+  display:block;
+}
+.hideawayWEDNESDAY{
+display:none;
+}
+#WEDNESDAY:checked ~ .hideawayWEDNESDAY{
+  display:block;
+}
+.hideawayTHURSDAY{
+display:none;
+}
+#THURSDAY:checked ~ .hideawayTHURSDAY{
+  display:block;
+}
+.hideawayFRIDAY{
+display:none;
+}
+#FRIDAY:checked ~ .hideawayFRIDAY{
+  display:block;
+}
+.hideawaySATURDAY{
+display:none;
+}
+#SATURDAY:checked ~ .hideawaySATURDAY{
+  display:block;
+}
+.hideawaySUNDAY{
+display:none;
+}
+#SUNDAY:checked ~ .hideawaySUNDAY{
+  display:block;
+}
+
+ul#indexDay li{
+height:20%;
+ display:inline;
+ padding-right: 20px;
+ padding-left: 0px;
+ }

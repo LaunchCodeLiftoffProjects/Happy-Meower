@@ -6,39 +6,26 @@
 <body class="index-background">
 
 <div th:replace="fragments :: navbar"></div>
-
-
-<div>
-    <div class="container">
-        <div class="d-flex justify-content-center h-auto pb-5">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th th:text="${happyHour.name}"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td th:text="${happyHour.address}"></td>
-                </tr>
-                <tr>
-                    <td th:text="${happyHour.getStandardDayTime()}"></td>
-                </tr>
-                </tbody>
-                <tr>
-                    <td>
-                        <a th:href="${happyHour.website}" th:text="${happyHour.website}" target="_blank"></a>
-                    </td>
-                </tr>
-
-            </table>
-
-        </div>
-
+<div class="d-flex flex-column vh-100">
+    <div class="d-flex p-5">
+        <div class="card w-50 bg-white shadow">
+            <h5 class="card-header" th:text="${happyHour.name}"></h5>
+            <div class="card-body">
+                <h6>Address: </h6>
+                <p class="card-text" th:text="${happyHour.address}"></p>
+                <h6>Time: </h6>
+                <p class="card-text" th:text="${happyHour.getStandardDayTime()}"></p>
+                <h6>Website: </h6>
+                <a th:href="${happyHour.website}" th:text="${happyHour.website}" target="_blank" class="btn btn-primary"></a>
+            </div>
+       </div>
         <div th:replace="fragments :: map"></div>
-
     </div>
+
+
+
 </div>
+
 
 </body>
 

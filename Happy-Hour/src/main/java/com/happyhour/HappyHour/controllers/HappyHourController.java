@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.time.DayOfWeek;
+import java.time.format.TextStyle;
 import java.util.*;
 
 
@@ -50,6 +51,7 @@ public class HappyHourController {
             resultAddresses.add(result.getAddress());
         }
         model.addAttribute("searchTerm",searchTerm);
+        model.addAttribute("dayOfWeek",dayOfWeek.getDisplayName(TextStyle.FULL,Locale.getDefault()));
         //Will need optimization.
         if(searchTerm.equals("")){
             List<HappyHour> tempHappyHour=new ArrayList<>();
@@ -70,7 +72,6 @@ public class HappyHourController {
             return "redirect:";
         }
         model.addAttribute("addressList",resultAddresses);
-
         return "results";
     }
 

@@ -2,39 +2,36 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-<head th:replace="fragments :: head"></head>
+    <head th:replace="fragments :: head"></head>
 
-<title th:text="${title}"></title>
+    <title th:text="${title}"></title>
 
-<body class="index-background">
+    <body class="index-background">
 
-    <div th:replace="fragments :: navbar"></div>
+        <nav th:replace="fragments :: navbar"></nav>
 
-    <div class="d-flex flex-column vh-100">
-    <div class="d-flex flex-column-reverse h-50">
-    <div th:replace="fragments :: search"></div>
-    </div>
-        <div class=>
-            <table>
-                <thead>
-                <tr>
-                    <th> New Happy Hours</th>
-                </tr>
-                </thead>
-                <tbody>
-                <th:block th:each="happy : ${happyHours}">
-                    <tr>
-                        <td>
-                            <a th:href="@{'/user-view/'+${happy.id}}" th:text="${happy}" class="btn btn-secondary " role="button" ></a>
-                        </td>
-                    </tr>
-                </th:block>
-                </tbody>
-            </table>
+        <div class="d-flex flex-column vh-100">
+            <div class="d-flex flex-column-reverse h-50 p-3">
+                <div th:replace="fragments :: search"></div>
+            </div>
+            <div class="container-fluid h-25">
+            <h4 class="p-3"> New Happy Hours</h4>
+            <div class="d-flex justify-content-around">
+                    <th:block th:each="happy : ${happyHours}">
+
+                                <a class="card shadow" th:href="@{'/user-view/'+${happy.id}}" role="button" style="height:150px; width: 200px;">
+                                    <img src="/img/new-background.jpg" class="card-img" alt=# style="height:150px">
+                                    <div class="card-img-overlay">
+                                        <h4 th:text="${happy.name}"></h4>
+                                    </div>
+                                </a>
+                    </th:block>
+
+            </div>
+                <div class="d-flex justify-content-center p-3">
+                    <a th:href="@{'/owner-registration'}" th:text="'Want to add your Happy Hour?'" class="btn btn-primary " role="button"></a>
+                </div>
         </div>
-        <div class="d-flex justify-content-center">
-            <a th:href="@{'/owner-registration'}" th:text="'Want to add your Happy Hour?'" class="btn btn-primary " role="button"></a>
         </div>
-    </div>
-</body>
+    </body>
 </html>
