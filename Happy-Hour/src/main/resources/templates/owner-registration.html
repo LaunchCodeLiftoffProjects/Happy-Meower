@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/" class="h-100">
-<head th:replace="fragments :: head">
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
 <title th:text="${title}"></title>
 
-<body class="container body_text">
-    <div class="bg">
-        <div th:replace="fragments :: header"></div>
+<body class="index-background">
 
-        <div th:replace="fragments :: navbar"></div>
+<div th:replace="fragments :: navbar"></div>
 
-        <div class="row d-flex justify-content-center">
+<div class="vh-100 row align-items-center">
+    <div class="card bg-dark text-white mx-auto w-75 shadow-lg p-3 mb-5 rounded">
+        <img src="/img/reg.png" class="card-img" alt=#>
+        <div class="card-img-overlay">
+            <div class="d-flex h-100">
+                <div class="align-self-center p-5">
+                <h4>Register to add your own happy hour:</h4>
+                    <p>Cats are restricted from the distribution and consumption of alcohol</p>
             <form method="post">
                 <div class="form-group">
                     <label>Username
@@ -32,9 +37,13 @@
 
                 <input type="Submit" class="btn btn-primary" value="Register"/>
             </form>
-        </div>
-
     </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 
 </html>

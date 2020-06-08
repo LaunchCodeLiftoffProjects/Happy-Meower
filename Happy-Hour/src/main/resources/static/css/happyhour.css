@@ -1,24 +1,43 @@
-header,body{
-    background: #D8801A !important;
-}
-.bg{
-    background-image: url("/img/HappyHourBG.png");
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-    background-color: #D8801A;
-}
-
-body,html{
-    height: 100%;
+.index-background{
+    background-color: #6699cc;
+     background-image: url("/img/background.png");
+     background-position: center center;
+     background-repeat: no-repeat;
+    background-size:cover;
+     background-position:center center;
+     background-attachment: fixed;
+     padding-top: 56px;
+     font-family:Acme,Verdana, sans-serif;
 }
 
-.body_text {
-    font-family: Comic Sans MS, Comic Sans, cursive;
-    font-weight: bold; color: white;
+.p-6{
+    padding: 9rem!important;
+}
+li {
+    list-style: none;
+    display: inline-block;
+    padding-right: 40px;
 }
 
+li a {
+    text-decoration: none!important;
+    font-family: Alatsi;
+    font-size: 18px;
+    color:  #0086b3;
+}
+li a:hover {
+    color: #33ccff;
+}
+h4{
+text-decoration: none!important;
+    font-size: 18px;
+    color:  #000000;
+    text-align: center
+    }
+.navbar-brand {
+    font-family: Aclonica;
+    font-size: 35px;
+}
 .searchbar{
     margin-bottom: auto;
     margin-top: auto;
@@ -26,6 +45,7 @@ body,html{
     background-color: #FFFFFF;
     border-radius: 30px;
     padding: 10px;
+    width: 520px;
 }
 
 .search_input{
@@ -37,7 +57,7 @@ body,html{
     padding: 0 10px;
     caret-color:transparent;
     line-height: 40px;
-    transition: width 0.4s linear;
+
 }
 
 .search_icon{
@@ -51,7 +71,6 @@ body,html{
     color: #e74c3c;
     text-decoration:none;
 }
-
 .hideawayMONDAY{
 
 display:none;
@@ -100,4 +119,6 @@ display:none;
 ul#indexDay li{
 height:20%;
  display:inline;
+ padding-right: 20px;
+ padding-left: 0px;
  }

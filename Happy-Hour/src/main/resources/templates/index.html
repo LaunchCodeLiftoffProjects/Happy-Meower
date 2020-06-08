@@ -2,51 +2,34 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-<head th:replace="fragments :: head">
-</head>
-<title th:text="${title}"></title>
-<body >
-<div class="bg">
-    <div class="container h-100" >
-        <div class="d-flex justify-content-end p-2" >
-            <div>
-                <a class="nav-link" th:href="@{/owner-login}" sec:authorize="!isAuthenticated()">Log In</a>
-                <form th:action="@{/logout}" method="post" name="logoutForm"></form>
-                <a class="nav-link" href="#" sec:authorize="isAuthenticated()"  onclick="document.logoutForm.submit()">Log Out</a>
-            </div>
-<!--            <a th:href="@{'/owner-login'}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>-->
-        </div>
+    <head th:replace="fragments :: head"></head>
 
-<!--        SAMPLE VERSION OF USE-->
-<!--        <div sec:authorize="isAuthenticated()">-->
-<!--            <span sec:authentication="name"></span>-->
-<!--            This content is only shown to authenticated users.-->
-<!--        </div>-->
-        <div class="d-flex justify-content-center" style="height:25%">
-            <div th:replace="fragments :: search"></div>
+    <title th:text="${title}"></title>
+
+    <body class="index-background">
+
+        <nav th:replace="fragments :: navbar"></nav>
+
+        <div class="d-flex flex-column vh-100">
+            <div class="d-flex flex-column-reverse h-50 p-6">
+                <div th:replace="fragments :: search"></div>
+            </div>
+            <div class="container-fluid h-auto">
+            <h4 class="w-25 rounded shadow bg-light mx-auto p-3"> New Happy Hours</h4>
+            <div class="d-flex justify-content-around">
+                    <th:block th:each="happy : ${happyHours}">
+                                <a class="card shadow" th:href="@{'/user-view/'+${happy.id}}" role="button" style="height:100px; width: 100px;">
+                                    <img src="/img/new-background.jpg" class="card-img" alt=# style="height:100px">
+                                    <div class="card-img-top">
+                                        <h4 th:text="${happy.name}"></h4>
+                                    </div>
+                                </a>
+                    </th:block>
+            </div>
+                <div class="d-flex justify-content-center p-5">
+                    <a th:href="@{'/owner-registration'}" th:text="'Want to add your Happy Hour?'" class="btn btn-primary " role="button"></a>
+                </div>
         </div>
-        <div class="d-flex justify-content-center h-auto">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th> New Happy Hours</th>
-                </tr>
-                </thead>
-                <tbody>
-                <th:block th:each="happy : ${happyHours}">
-                    <tr>
-                        <td>
-                            <a th:href="@{'/user-view/'+${happy.id}}" th:text="${happy}" class="btn btn-secondary " role="button" ></a>
-                        </td>
-                    </tr>
-                </th:block>
-                </tbody>
-            </table>
         </div>
-        <div class="d-flex justify-content-center">
-            <a th:href="@{'/owner-registration'}" th:text="'Want to add your Happy Hour?'" class="btn btn-primary " role="button"></a>
-        </div>
-    </div>
-</div>
-</body>
+    </body>
 </html>

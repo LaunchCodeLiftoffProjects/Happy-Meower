@@ -83,7 +83,6 @@ public class AuthenticationController {
 
         Owner newOwner = new Owner(registerFormDTO.getUsername(), registerFormDTO.getPassword());
         ownerRepository.save(newOwner);
-//        setOwnerInSession(request.getSession(), newOwner);
 
         return "redirect:/owner-login";
     }

@@ -4,52 +4,37 @@
 
 <title th:text="${title}"></title>
 
-<body class="container body_text">
-    <div class="bg">
+<body class="index-background">
 
-        <div th:replace="fragments :: header"></div>
+<div th:replace="fragments :: navbar"></div>
 
-        <div th:replace="fragments :: navbar"></div>
-
-        <div class="row d-flex justify-content-center">
-<!--            <form method="post">-->
-<!--                <div class="form-group">-->
-<!--                    <label>Username-->
-<!--                        <input class="form-control" th:field="${loginFormDTO.username}">-->
-<!--                    </label>-->
-<!--                    <p class="error" th:errors="${loginFormDTO.username}"></p>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label>Password-->
-<!--                        <input class="form-control" th:field="${loginFormDTO.password}" type="password">-->
-<!--                    </label>-->
-<!--                    <p class="error" th:errors="${loginFormDTO.password}"></p>-->
-<!--                </div>-->
-
-<!--                <input type="submit" class="btn btn-primary" value="Log In" />-->
-<!--            </form>-->
-            <h3>Enter user name and password:</h3>
-            <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
-                <table>
-                    <tr>
-                        <td>User:</td>
-                        <td><input type='text' name='username' value=''></td>
-                    </tr>
-                    <tr>
-                        <td>Password:</td>
-                        <td><input type='password' name='password' /></td>
-                    </tr>
-                    <tr>
-                        <td>Remember Me?</td>
-                        <td><input type="checkbox" name="remember-me" /></td>
-                    </tr>
-                    <tr>
-                        <td><input name="submit" type="submit" value="submit" /></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        <p class="row d-flex justify-content-center my-2">Don't have an account?<a href="/owner-registration">Register for one.</a></p>
+<div class="vh-100 row align-items-center">
+    <div class="card bg-dark text-white mx-auto w-75 shadow-lg p-3 mb-5 rounded">
+        <img src="/img/login.png" class="card-img" alt=#>
+        <div class="card-img-overlay">
+            <div class="d-flex flex-row-reverse h-100">
+                <div class="align-self-center p-6">
+                    <h3>Happy Meower User Login</h3>
+                    <form name="f" th:action="@{/j_spring_security_check}" method='POST' >
+                        <div class="form-group">
+                            <label>User:
+                            <input class="form-control" type="text" name="username" value='' required></label>
+                        </div>
+                        <div class="form-group">
+                            <label>Password:
+                            <input class="form-control" type="password" name='password' required></label>
+                        </div>
+                        <div class="form-group">
+                            <label>Remember Me?</label>
+                            <input type="checkbox" name="remember-me">
+                        </div>
+                        <p class="error" th:text="${errorMessge}"></p>
+                        <button name="submit" value="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <p class="row d-flex justify-content-center my-2">Don't have an account?<a href="/owner-registration">Register for one.</a></p>
+                </div></div></div>
     </div>
+</div>
+
 </body>
 </html>
