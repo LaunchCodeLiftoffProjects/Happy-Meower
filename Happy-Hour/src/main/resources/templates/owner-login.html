@@ -28,6 +28,7 @@
                             <label>Remember Me?</label>
                             <input type="checkbox" name="remember-me">
                         </div>
+                        <p class="error" th:text="${errorMessge}"></p>
                         <button name="submit" value="submit" class="btn btn-primary">Submit</button>
                     </form>
                     <p class="row d-flex justify-content-center my-2">Don't have an account?<a href="/owner-registration">Register for one.</a></p>

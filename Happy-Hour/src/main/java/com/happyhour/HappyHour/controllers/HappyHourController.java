@@ -93,8 +93,8 @@ public class HappyHourController {
     public String processCreateHappyHourForm(@ModelAttribute @Valid HappyHour newHappyHour, Errors errors, @ModelAttribute TimeFormDTO newTimeForm,
                                              Model model, Principal principal) {
         if(errors.hasErrors()) {
-            model.addAttribute("title", "Owner Home");
-            return "owner-home";
+            model.addAttribute("errors",errors);
+            return "redirect:/owner-home";
         }
 
         Owner result = ownerRepository.findByUsername(principal.getName());
